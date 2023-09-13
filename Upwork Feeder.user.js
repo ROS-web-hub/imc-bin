@@ -6,7 +6,7 @@
 // @author       Valloon
 // @match        https://www.upwork.com/*
 // @match        http://web.valloon.me/*
-// @match        http://localhost/*
+// @match        http://146.19.170.49/*
 // @icon         https://www.upwork.com/favicons.ico
 // @grant        unsafeWindow
 // @grant        GM_setValue
@@ -19,7 +19,7 @@
 // @require http://code.jquery.com/jquery-latest.js
 
 
-const SERVER_URL = "http://localhost";
+const SERVER_URL = "http://146.19.170.49";
 // const SERVER_URL = "http://web.valloon.me";
 const CHANNELS = 0;
 
@@ -385,12 +385,32 @@ const CHANNELS = 0;
                 let hourlyRateInput = document.querySelector("#step-rate");
                 let projectModeRadio = document.querySelectorAll("input[type=radio][name=milestoneMode]")[1];
                 let fixedBudgetInput = document.querySelector("#charged-amount-id");
+                let rateIncreaseDropdown = document.querySelector(".sri-form-card");
+
                 if (hourlyRateInput) {		// if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 1) {
                     if (proposalData.hourlyRate) {
                         vueData.chargedAmount = proposalData.hourlyRate;
                         console.log("Hourly Rate Change into: " + proposalData.hourlyRate);
                     } else {
                         console.log("Hourly Rate Not Changed");
+                    }
+
+                    if (rateIncreaseDropdown) {
+                        let firstRateIncreaseDropdown = document.querySelector("#dropdown-label-3")
+                        firstRateIncreaseDropdown.click();
+
+                        console.log("Click Rate Increase Dropdown Div");
+
+                        while (true) {
+                            let never = document.querySelector(".sri-form-card .up-menu-container ul[data-test=menu] li:first-child");
+                            if (never) {
+                                never.click();
+                                console.log("Click never");
+                                break;
+                            }
+                            await new Promise(r => setTimeout(r, 500));
+                        }
+                        break;
                     }
                     break;
                 } else if (projectModeRadio || fixedBudgetInput) {		// } else if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 2) {
@@ -414,6 +434,24 @@ const CHANNELS = 0;
                         await new Promise(r => setTimeout(r, 500));
                     }
                     break;
+
+                    if (rateIncreaseDropdown) {
+                        let firstRateIncreaseDropdown = document.querySelector("#dropdown-label-3")
+                        firstRateIncreaseDropdown.click();
+
+                        console.log("Click Rate Increase Dropdown Div");
+
+                        while (true) {
+                            let never = document.querySelector(".sri-form-card .up-menu-container ul[data-test=menu] li:first-child");
+                            if (never) {
+                                never.click();
+                                console.log("Click never");
+                                break;
+                            }
+                            await new Promise(r => setTimeout(r, 500));
+                        }
+                        break;
+                    }
                 } else {
                     // console.log("Unknown Budget Type: " + data.openingsCache[data.ciphertext].opening.hourlyBudgetType);
                     console.log("Budget Type Not Found, Retry...");
