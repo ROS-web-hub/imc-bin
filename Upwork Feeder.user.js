@@ -6,7 +6,7 @@
 // @author       Valloon
 // @match        https://www.upwork.com/*
 // @match        http://web.valloon.me/*
-// @match        http://146.19.170.49/*
+// @match        http://146.19.170.48/*
 // @icon         https://www.upwork.com/favicons.ico
 // @grant        unsafeWindow
 // @grant        GM_setValue
@@ -19,9 +19,9 @@
 // @require http://code.jquery.com/jquery-latest.js
 
 
-const SERVER_URL = "http://146.19.170.49";
+const SERVER_URL = "http://146.19.170.48";
 // const SERVER_URL = "http://web.valloon.me";
-const CHANNELS = 0;
+const CHANNELS = 1;
 
 
 (async function() {
@@ -387,7 +387,7 @@ const CHANNELS = 0;
                 let fixedBudgetInput = document.querySelector("#charged-amount-id");
                 let rateIncreaseDropdown = document.querySelector(".sri-form-card");
 
-                if (hourlyRateInput) {		// if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 1) {
+                if (hourlyRateInput) {      // if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 1) {
                     if (proposalData.hourlyRate) {
                         vueData.chargedAmount = proposalData.hourlyRate;
                         console.log("Hourly Rate Change into: " + proposalData.hourlyRate);
@@ -413,7 +413,7 @@ const CHANNELS = 0;
                         break;
                     }
                     break;
-                } else if (projectModeRadio || fixedBudgetInput) {		// } else if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 2) {
+                } else if (projectModeRadio || fixedBudgetInput) {      // } else if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 2) {
                     vueData.fixedPricePaymentMode = "default";
                     if (proposalData.fixedBudget) {
                         vueData.chargedAmount = proposalData.fixedBudget;
@@ -530,6 +530,10 @@ const CHANNELS = 0;
                 }
                 if (checkBreakConfirmed) break loop_1;
 
+                
+            }
+            
+            while (true) {
                 let btnSubmitConfirm = [...document.querySelectorAll(".fe-proposal-disintermediation-dialog button")].filter(a => a.innerText.trim() == "Submit")[0];
                 if (btnSubmitConfirm) {
 
@@ -538,9 +542,12 @@ const CHANNELS = 0;
                     console.log("Click Final Submit Button");
                     break;
                 }
+                await new Promise(r => setTimeout(r, 500));
+
             }
 
-            for (let i = 0; i < 5; i++) {
+
+            while (true) {
                 let btnSubmit = [...document.querySelectorAll("button")].filter(a => a.innerText.trim() == "Continue\nto submit")[0];
                 if (btnSubmit) {
                     btnSubmit.disabled = false;
@@ -550,7 +557,6 @@ const CHANNELS = 0;
                 }
                 await new Promise(r => setTimeout(r, 500));
             }
-
             break;
         }
     } else if (location.pathname.includes('/ab/proposals/')) {
