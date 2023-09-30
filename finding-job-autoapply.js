@@ -1,12 +1,12 @@
 // https://www.upwork.com/nx/find-work/sw.js
 // window.$nuxt.$store._vm.$data.$$state['feedMy']['jobs'][0].recno
 
-window.SERVER_URL = "http://web.valloon.me";
+window.SERVER_URL = "http://146.19.170.48";
 
 window.AUTO_ENABLED = 1;
 window.PRE = [1, 2];
 
-window.CHANNELS = [2, 3];
+window.CHANNELS = [1, 2, 3];
 window.CHANNEL_INDEX = 0;
 window.AUTO_INTERVAL = 5000;
 
@@ -191,9 +191,9 @@ window.setTimeout(async () => {
 						let budgetMin = 0, budgetMax = 0;
 						if (budget.split("$")[1]) budgetMin = parseInt(budget.split("$")[1]);
 						if (budget.split("$")[2]) budgetMax = parseInt(budget.split("$")[2]);
-						if (budgetMin && budgetMin < 10 && !budgetMax || budgetMax && budgetMax < 15)
+						if (budgetMin && budgetMin < 10 && !budgetMax || budgetMax && budgetMax < 13)
 							continue;
-						if (budget.includes("Fixed") && budgetMin && budgetMin < 500)
+						if (budget.includes("Fixed") && budgetMin && budgetMin < 200)
 							continue;
 
 						const jobTitle = sectionElement.querySelector(".job-tile-title .up-n-link").innerText.trim();
@@ -369,20 +369,19 @@ window.setTimeout(async () => {
 
 window.checkCountryBan = function (countryName) {
 	if (!countryName) return false;
-	if (countryName == "United States" || countryName == "Canada" || countryName == "Australia" || countryName == "Qutar" || countryName == "Brazil") return false;
-	if (countryName == "United Kingdom" || countryName == "France" || countryName == "Switzerland" || countryName == "Sweden" || countryName == "United Arab Emirates") return false;
+	// if (countryName == "United States" || countryName == "Canada" || countryName == "Australia" || countryName == "Qatar" || countryName == "Brazil") return false;
+	// if (countryName == "United Kingdom" || countryName == "France" || countryName == "Switzerland" || countryName == "Sweden" || countryName == "United Arab Emirates") return false;
 	if (countryName == "India" || countryName == "Pakistan" || countryName == "Bangladesh" || countryName == "Nigeria" || countryName == "South Korea"
 		|| countryName == "Ukraine" || countryName == "Kazakhstan" || countryName == "Serbia")
 		return true;
-	// return true;
+	return false;
 }
 
 window.checkTitleBan = function (jobTitleLowerCase) {
 	if (jobTitleLowerCase.startsWith("do not apply ") || jobTitleLowerCase.startsWith("[$"))
 		return jobTitleLowerCase;
 	const banList = [/* " tutor", " teach", " guide", " assist", " consult", " support", " lead", "troubleshoot",*/
-		" android ", " iphone ", " ionic ", " unity ", " unreal ", " swift ", " ios ", " react native ", " reactnative ", " flutter ",
-		" zoho ", " youtube ", " tiktok ", " reddit ", " spotify ", " facebook ", " linkedin ", " twitter ", " instagram ", " pinterest ", " whatsapp ", /*" social",*/ " dating ",
+		" android ", "wordpress", "wp", " iphone ", " ionic ", " unity ", " unreal ", " swift ", " ios ", " zoho ", " youtube ", " tiktok ", " reddit ", " spotify ", " facebook ", " linkedin ", " twitter ", " instagram ", " pinterest ", " whatsapp ", /*" social",*/ 
 		" airtable ", " notion ", " salesforce ", " squarespace ", " zenddesk ", " hubspot ",
 		" filemaker ", " sharepoint ", " moodle ", " odoo ", " kajabi ", " thinkific ",
 		" drupal ", " graphic design", " graphite design", "webassembly", "web assembly",
@@ -390,7 +389,7 @@ window.checkTitleBan = function (jobTitleLowerCase) {
 		" tradingview ", " pinescript ", " metatrader ", " mt4 ", " mt5 ",
 		" framer ", " terraform ", " quickbooks ", " monday.com ", " playwright ",
 		" cheap ", " low budget ", " budget is low ",
-		/*" power automate ", " zapier ", " make.com ",*/ " podio ", " wix ", " bubble.io ", " unbounce ", " xano "];
+		/*" power automate ", " zapier ", " make.com ",*/ " podio ", " wix ", " unbounce ", " xano "];
 	for (var i in banList)
 		if (` ${jobTitleLowerCase} `.includes(banList[i])) return banList[i];
 	return false;
@@ -403,42 +402,23 @@ window.getProposalTypes = function (jobTitle, jobDescription, checkBan) {
 	}
 	jobTitle = jobTitle.replaceAll(/[\,\/\-\~\!\?–]/g, " ").replace(/\.+$/, "").replaceAll(/\s\s+/g, " ").toLowerCase();
 	if (checkBan && checkTitleBan(jobTitle)) return;
-	if (jobTitle.includes("webflow"))
-		return [
-			{ preference: 1, title: "webflow", profile: "webflow-2", proposalId: "webflow-8", channel: 0, priority: 3 },
-			{ preference: 2, title: "webflow", profile: "webflow", proposalId: "webflow-7", channel: 0, priority: 2 },
-		];
-	if (jobTitle.includes("shopify"))
-		return [
-			{ preference: 1, title: "shopify", profile: "ecommerce", proposalId: "shopify-8", channel: 0, priority: 3 },
-			{ preference: 2, title: "shopify", profile: "shopify", proposalId: "shopify-7", channel: 0, priority: 2 },
-		];
-	if (jobTitle.includes("wordpress") || jobTitle.includes("word press") || jobTitle.includes("woocommerce") || ` ${jobTitle} `.includes(" divi ") || jobTitle.includes("elementor"))
-		return [
-			{ preference: 1, title: "wordpress", profile: "laravel-ruby", proposalId: "wordpress-2", channel: 0, priority: 3 },
-			{ preference: 2, title: "wordpress", profile: "wp-django", proposalId: "wordpress-1", channel: 0, priority: 2 },
-		];
 	if (jobTitle.includes("laravel") || jobTitle.includes("php") || jobTitle.includes("codeigniter") || jobTitle.includes("cpanel"))
 		return [
-			{ preference: 1, title: "laravel", profile: "wp-django", proposalId: "laravel-2", channel: 0, priority: 5 },
-			{ preference: 2, title: "laravel", profile: "laravel-ruby", proposalId: "laravel-1", channel: 0, priority: 4 },
+			{ preference: 1, title: "laravel", profile: "node-php", proposalId: "laravel-2", channel: 0, priority: 1 },
+			{ preference: 2, title: "laravel", profile: "laravel-ruby", proposalId: "laravel-1", channel: 0, priority: 1 },
 		];
-	if (jobTitle.includes("commerce"))
-		return [
-			{ preference: 1, title: "ecommerce", profile: "shopify", proposalId: "ecommerce-8", channel: 0, priority: 2 },
-			{ preference: 2, title: "ecommerce", profile: "ecommerce", proposalId: "ecommerce-7", channel: 0, priority: 1 },
-		];
-	if (jobTitle.includes("web3") || jobTitle.includes("web 3") || jobTitle.includes("blockchain") || jobTitle.includes("solidity")
-		|| jobTitle.includes("ethereum") || jobTitle.includes("polygon") || jobTitle.includes("rust") || jobTitle.includes("nft")
+	if (jobTitle.includes("web3") || jobTitle.includes("web 3") || jobTitle.includes("web-3") || jobTitle.includes("blockchain") || jobTitle.includes("solidity")
+		|| jobTitle.includes("ethereum") || jobTitle.includes("polygon") || jobTitle.includes("rust") || jobTitle.includes("golang") || jobTitle.includes("go") || jobTitle.includes("nft")
 		|| jobTitle.includes("smartcontract") || jobTitle.includes("smart contract")
 		|| jobTitle.includes("wallet") && (jobTitle.includes("crypto") || jobTitle.includes("connect")))
 		return [
 			{ preference: 1, title: "web3 / blockchain", profile: "blockchain-2", proposalId: "blockchain-5", channel: 0, priority: 2 },
-			{ preference: 2, title: "web3 / blockchain", profile: "blockchain", proposalId: "blockchain-4", channel: 0, priority: 1 },
+			{ preference: 2, title: "web3 / blockchain", profile: "blockchain", proposalId: "blockchain-4", channel: 0, priority: 2 }
 		];
 	if (jobTitle.includes("django") || jobTitle.includes("flask"))
 		return [
-			{ preference: 1, title: "django", profile: "wp-django", proposalId: "django-flask-1", channel: 0, priority: 1 }
+			{ preference: 1, title: "database", profile: "laravel-ruby", proposalId: "full-stack-1", channel: 0, priority: 3 },
+			{ preference: 2, title: "django", profile: "wp-django", proposalId: "django-flask-1", channel: 0, priority: 1 }
 		];
 	if (` ${jobTitle} `.includes(" ruby ") || ` ${jobTitle} `.includes(" rails "))
 		return [
@@ -446,106 +426,201 @@ window.getProposalTypes = function (jobTitle, jobDescription, checkBan) {
 		];
 	if (` ${jobTitle} `.includes(" spring ") || jobTitle.includes("java") && (jobTitle.includes("web") || jobTitle.includes("backend") || jobTitle.includes("back end") || jobTitle.includes("fullstack") || jobTitle.includes("full stack")))
 		return [
-			{ preference: 1, title: "java spring", profile: "java-cs", proposalId: "java-spring-1", channel: 0, priority: 1 }
+			{ preference: 1, title: "java spring", profile: "java-cs", proposalId: "java-spring-1", channel: 0, priority: 2 }
+		];
+	if (jobTitle.includes("backend") || jobTitle.includes("database") || jobTitle.includes("api development") || jobTitle.includes("api"))
+		return [
+			{ preference: 1, title: "backend", profile: "laravel-ruby", proposalId: "api-integration-database-1", channel: 0, priority: 3 },
+			{ preference: 2, title: "backend", profile: "wp-django", proposalId: "api-integration-database-2", channel: 0, priority: 3 }
 		];
 	if (jobTitle.includes("asp.net"))
 		return [
 			{ preference: 1, title: "asp.net", profile: "java-cs", proposalId: "asp-1", channel: 0, priority: 1 }
 		];
-	if (jobTitle.includes("react") || jobTitle.includes("next") || jobTitle.includes("gatsby") || ` ${jobTitle} `.includes(" mern "))
+	if (jobTitle.includes("react") || jobTitle.includes("next") || jobTitle.includes("gatsby") || jobTitle.includes("mern") || jobTitle.includes("angular") || jobTitle.includes("mean"))
 		return [
-			{ preference: 1, title: "react", profile: "node-php", proposalId: "react-5", channel: 0, priority: 4 },
-			{ preference: 2, title: "react", profile: "javascript", proposalId: "react-4", channel: 0, priority: 3 },
+			{ preference: 1, title: "react", profile: "node-php", proposalId: "react-5", channel: 0, priority: 2 },
+			{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "react-4", channel: 0, priority: 2 },
 		];
 	if (jobTitle.includes("vue") || jobTitle.includes("nuxt") || jobTitle.includes("mevn"))
 		return [
-			{ preference: 1, title: "vue", profile: "node-php", proposalId: "vue-5", channel: 0, priority: 4 },
-			{ preference: 2, title: "vue", profile: "javascript", proposalId: "vue-4", channel: 0, priority: 3 },
+			{ preference: 1, title: "vue", profile: "node-php", proposalId: "vue-5", channel: 0, priority: 2 },
+			{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "full-stack-5", channel: 0, priority: 2 },
 		];
 	if (jobTitle.includes("svelte"))
 		return [
-			{ preference: 1, title: "svelte", profile: "node-php", proposalId: "svelte-5", channel: 0, priority: 3 },
-			{ preference: 2, title: "svelte", profile: "javascript", proposalId: "svelte-4", channel: 0, priority: 2 },
+			{ preference: 1, title: "svelte", profile: "node-php", proposalId: "svelte-5", channel: 0, priority: 2 },
+			{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "svelte-4", channel: 0, priority: 2 },
 		];
-	if (` ${jobTitle} `.includes(" node") || ` ${jobTitle} `.includes(" express") || ` ${jobTitle} `.includes(" nest") || jobTitle.includes("typescript"))
+	if (jobTitle.includes("javascript"))
 		return [
-			{ preference: 1, title: "node", profile: "node-php", proposalId: "node-5", channel: 0, priority: 4 },
-			{ preference: 2, title: "node", profile: "javascript", proposalId: "node-4", channel: 0, priority: 3 },
+			{ preference: 1, title: "svelte", profile: "node-php", proposalId: "laravel-1", channel: 0, priority: 3 },
+			{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "full-stack-1", channel: 0, priority: 2 },
 		];
-	if (jobTitle.includes("chrome") && jobTitle.includes("extension"))
+	if (jobTitle.includes("api integration"))
+		return [
+			{ preference: 1, title: "node", profile: "laravel-ruby", proposalId: "api-integration-database-1", channel: 0, priority: 3 },
+			{ preference: 2, title: "node", profile: "wp-django", proposalId: "api-integration-database-2", channel: 0, priority: 3 }
+		];
+	if (jobTitle.includes("node") || jobTitle.includes("express") || jobTitle.includes("nest") || jobTitle.includes("typescript"))
+		return [
+			{ preference: 1, title: "node", profile: "node-php", proposalId: "node-5", channel: 0, priority: 3 },
+			{ preference: 2, title: "node", profile: "wp-django", proposalId: "node-4", channel: 0, priority: 3 }
+		];
+	if (jobTitle.includes("chrome") && jobTitle.includes("extension") || jobTitle.includes("shopify extension"))
 		return [
 			{ preference: 1, title: "chrome extension", profile: "frontend", proposalId: "chrome-extension-7", channel: 0, priority: 2 },
 		];
-	if (jobTitle.includes("frontend") || jobTitle.includes("front end") || jobTitle.includes("responsive") || ` ${jobTitle} `.includes(" css ") || jobTitle.includes("figma to html"))
+	if (jobTitle.includes("build responsive"))
+		return [
+			{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 3 },
+			{ preference: 2, title: "frontend", profile: "frontend", proposalId: "frontend-7", channel: 0, priority: 3 }
+		];
+	if (jobTitle.includes("mongo") || jobTitle.includes("mysql") || jobTitle.includes("postgresql") || jobTitle.includes("supabase") || jobTitle.includes("oracle"))
+		return [
+			{ preference: 1, title: "database", profile: "laravel-ruby", proposalId: "database-mongodb-1", channel: 0, priority: 3 },
+			{ preference: 2, title: "fullstack", profile: "node-php", proposalId: "api-integration-database-1", channel: 0, priority: 2 },
+		];
+	if (jobTitle.includes("web development") || jobTitle.includes("website development") || jobTitle.includes("webpage development"))
+		return [
+			{ preference: 1, title: "node", profile: "node-php", proposalId: "full-stack-2", channel: 0, priority: 3 },
+			{ preference: 2, title: "fullstack", profile: "laravel-ruby", proposalId: "web-development-1", channel: 0, priority: 2 },
+		];
+	if (jobTitle.includes("fullstack") || jobTitle.includes("full stack"))
+		return [
+			{ preference: 1, title: "fullstack", profile: "javascript", proposalId: "full-stack-2", channel: 0, priority: 2 },
+			{ preference: 2, title: "fullstack", profile: "laravel-ruby", proposalId: "full-stack-5", channel: 0, priority: 2 },
+		];
+	if (jobTitle.includes("web developer"))
+		return [
+			{ preference: 1, title: "fullstack", profile: "javascript", proposalId: "web-development-1", channel: 0, priority: 2 },
+			{ preference: 2, title: "fullstack", profile: "laravel-ruby", proposalId: "full-stack-5", channel: 0, priority: 2 },
+		];
+	if (jobTitle.includes("landing page"))
+		return [
+			{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 3 },
+			{ preference: 2, title: "frontend", profile: "frontend", proposalId: "frontend-7", channel: 0, priority: 3 }
+		];
+	if (jobTitle.includes("frontend") || jobTitle.includes("front end") || jobTitle.includes("responsive") || ` ${jobTitle} `.includes(" css ") || jobTitle.includes("figma to html") || jobTitle.includes("figma"))
 		return [
 			{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 2 },
-			{ preference: 2, title: "frontend", profile: "frontend", proposalId: "frontend-7", channel: 0, priority: 1 },
+			{ preference: 2, title: "frontend", profile: "frontend", proposalId: "frontend-7", channel: 0, priority: 3 }
 		];
-	if (jobTitle.includes("scraping") || jobTitle.includes("crawling"))
-		return [
-			{ preference: 2, title: "scraping", profile: "automation", proposalId: "scraping-9", channel: 0, priority: 1 }
-		];
-	if ((jobTitle.includes("automat") || jobTitle.includes("bot dev")) && !jobTitle.includes("trading") && !jobTitle.includes("strateg")
-		|| jobTitle.includes("power automate") || jobTitle.includes("zapier") || jobTitle.includes("make.com"))
-		return [
-			{ preference: 1, title: "automation", profile: "automation", proposalId: "automation-9", channel: 0, priority: 3 },
-			{ preference: 2, title: "automation", profile: "basic", proposalId: "bot-auto-9", channel: 0, priority: 2 },
-		];
-	if (` ${jobTitle} `.includes(" web ") || ` ${jobTitle} `.includes(" site ") || jobTitle.includes("webpage") || jobTitle.includes("website")
-		|| jobTitle.includes("dashboard") || jobTitle.includes("landing") || jobTitle.includes("portal") ||
-		jobTitle.includes("backend") || jobTitle.includes("back end") || jobTitle.includes("fullstack") || jobTitle.includes("full stack")) {
+	if (jobTitle.includes("web") || jobTitle.includes("site") || jobTitle.includes("webpage") || jobTitle.includes("fullstack developer") 
+	|| jobTitle.includes("full stack developer") || jobTitle.includes("website") || jobTitle.includes("developer") || jobTitle.includes("dashboard") 
+	|| jobTitle.includes("landing") || jobTitle.includes("portal") || jobTitle.includes("backend") || jobTitle.includes("back end") || jobTitle.includes("app") 
+	|| jobTitle.includes("web developer") || jobTitle.includes("fullstack") || jobTitle.includes("full stack") || jobTitle.includes("bug") || jobTitle.includes("fix")
+	|| jobTitle.includes("integration") || jobTitle.includes("build responsive") || jobTitle.includes("software") || jobTitle.includes("engineer") || jobTitle.includes("dapp") || jobTitle.includes("blockchain")
+	|| jobTitle.includes("build") || jobTitle.includes("responsive") || jobTitle.includes("database") || jobTitle.includes("development") || jobTitle.includes("integration") || jobTitle.includes("website") || jobTitle.includes("solidity") 
+	|| jobTitle.includes("smart contract") || jobTitle.includes("application") || jobTitle.includes("api") || jobTitle.includes("next") || jobTitle.includes("nest")
+	|| jobTitle.includes("vue") || jobTitle.includes("react") || jobTitle.includes("angular") || jobTitle.includes("framework") || jobTitle.includes("project")
+	|| jobTitle.includes("html") || jobTitle.includes("css") || jobTitle.includes("frontend")) {
 		if (jobDescription) {
 			jobDescription = jobDescription.replaceAll(/[\,\/\-\~\!\?–]/g, " ").replace(/\.+$/, "").replaceAll(/\s\s+/g, " ").toLowerCase();
-			if (jobDescription.includes("webflow"))
-				return [
-					{ preference: 1, title: "webflow", profile: "webflow-2", proposalId: "webflow-8", channel: 0, priority: 3 },
-					{ preference: 2, title: "webflow", profile: "webflow", proposalId: "webflow-7", channel: 0, priority: 2 },
-				];
-			if (jobDescription.includes("shopify"))
-				return [
-					{ preference: 1, title: "shopify", profile: "ecommerce", proposalId: "shopify-8", channel: 0, priority: 3 },
-					{ preference: 2, title: "shopify", profile: "shopify", proposalId: "shopify-7", channel: 0, priority: 2 },
-				];
 			if (jobDescription.includes("web3") || jobDescription.includes("web 3") || jobDescription.includes("blockchain") || jobDescription.includes("solidity")
 				|| jobDescription.includes("ethereum") || jobDescription.includes("polygon") || ` ${jobDescription} `.includes(" rust ") || ` ${jobDescription} `.includes(" nft ")
 				|| jobDescription.includes("smartcontract") || jobDescription.includes("smart contract")
 				|| jobDescription.includes("wallet") && (jobDescription.includes("crypto") || jobDescription.includes("connect")))
 				return [
-					{ preference: 1, title: "web3 / blockchain", profile: "blockchain-2", proposalId: "blockchain-5", channel: 0, priority: 2 },
-					{ preference: 2, title: "web3 / blockchain", profile: "blockchain", proposalId: "blockchain-4", channel: 0, priority: 1 },
+					{ preference: 1, title: "web3 / blockchain", profile: "blockchain-2", proposalId: "blockchain-5", channel: 0, priority: 3 },
+					{ preference: 2, title: "web3 / blockchain", profile: "blockchain", proposalId: "blockchain-4", channel: 0, priority: 2 }
 				];
 			if (jobDescription.includes("laravel") || jobDescription.includes("php") || jobDescription.includes("codeigniter") || jobDescription.includes("cpanel"))
 				return [
-					{ preference: 1, title: "laravel", profile: "wp-django", proposalId: "laravel-2", channel: 0, priority: 4 },
-					{ preference: 2, title: "laravel", profile: "laravel-ruby", proposalId: "laravel-1", channel: 0, priority: 3 },
-				];
-			if (jobDescription.includes("wordpress") || jobDescription.includes("woocommerce") || jobDescription.includes("divi ") || jobDescription.includes("elementor"))
-				return [
-					{ preference: 1, title: "wordpress", profile: "laravel-ruby", proposalId: "wordpress-2", channel: 0, priority: 3 },
-					{ preference: 2, title: "wordpress", profile: "wp-django", proposalId: "wordpress-1", channel: 0, priority: 2 },
+					{ preference: 1, title: "laravel", profile: "wp-django", proposalId: "laravel-2", channel: 0, priority: 3 },
+					{ preference: 2, title: "node", profile: "laravel-ruby", proposalId: "laravel-1", channel: 0, priority: 3 }
 				];
 			if (jobDescription.includes("django") || jobDescription.includes("flask"))
 				return [
-					{ preference: 1, title: "django", profile: "wp-django", proposalId: "django-flask-1", channel: 0, priority: 1 }
+					{ preference: 1, title: "database", profile: "laravel-ruby", proposalId: "full-stack-1", channel: 0, priority: 3 },
+					{ preference: 2, title: "django", profile: "wp-django", proposalId: "django-flask-1", channel: 0, priority: 1 }
 				];
 			if (` ${jobDescription} `.includes(" ruby ") || ` ${jobDescription} `.includes(" rales "))
 				return [
-					{ preference: 1, title: "ruby on rails", profile: "laravel-ruby", proposalId: "ruby-1", channel: 0, priority: 1 }
+					{ preference: 1, title: "ruby on rails", profile: "laravel-ruby", proposalId: "ruby-1", channel: 0, priority: 3 }
 				];
 			if (` ${jobDescription} `.includes(" java ") || ` ${jobDescription} `.includes(" spring "))
 				return [
-					{ preference: 1, title: "java spring boot", profile: "java-cs", proposalId: "java-spring-1", channel: 0, priority: 1 }
+					{ preference: 1, title: "java spring boot", profile: "java-cs", proposalId: "java-spring-1", channel: 0, priority: 2 }
 				];
 			if (jobDescription.includes("asp.net"))
 				return [
 					{ preference: 1, title: "asp.net", profile: "java-cs", proposalId: "asp-1", channel: 0, priority: 1 }
 				];
+			if (jobDescription.includes("backend") || jobDescription.includes("database") || jobDescription.includes("api development") || jobDescription.includes("api"))
+				return [
+					{ preference: 1, title: "node", profile: "laravel-ruby", proposalId: "full-stack-5", channel: 0, priority: 3 },
+					{ preference: 2, title: "node", profile: "wp-django", proposalId: "java-spring-1", channel: 0, priority: 3 }
+				];
+			if (jobDescription.includes("react") || jobDescription.includes("next") || jobDescription.includes("gatsby") || jobDescription.includes("mern"))
+				return [
+					{ preference: 1, title: "react", profile: "node-php", proposalId: "react-5", channel: 0, priority: 2 },
+					{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "react-4", channel: 0, priority: 2 },
+				];
+			if (jobDescription.includes("vue") || jobDescription.includes("nuxt") || jobDescription.includes("mevn"))
+				return [
+					{ preference: 1, title: "vue", profile: "node-php", proposalId: "vue-5", channel: 0, priority: 2 },
+					{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "vue-4", channel: 0, priority: 2 },
+				];
+			if (jobDescription.includes("svelte"))
+				return [
+					{ preference: 1, title: "svelte", profile: "node-php", proposalId: "svelte-5", channel: 0, priority: 2 },
+					{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "svelte-4", channel: 0, priority: 2 },
+				];
+			if (jobDescription.includes("javascript"))
+				return [
+					{ preference: 1, title: "svelte", profile: "node-php", proposalId: "laravel-1", channel: 0, priority: 3 },
+					{ preference: 2, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 3 },
+				];
+			if (jobDescription.includes("api integration"))
+				return [
+					{ preference: 1, title: "node", profile: "laravel-ruby", proposalId: "api-integration-database-1", channel: 0, priority: 3 },
+					{ preference: 2, title: "node", profile: "wp-django", proposalId: "api-integration-database-2", channel: 0, priority: 3 }
+				];
+			if (jobDescription.includes("node") || jobDescription.includes("express") || jobDescription.includes("nest") || jobDescription.includes("typescript"))
+				return [
+					{ preference: 1, title: "node", profile: "node-php", proposalId: "node-5", channel: 0, priority: 3 },
+					{ preference: 2, title: "node", profile: "wp-django", proposalId: "node-4", channel: 0, priority: 3 }
+				];
+			if (jobDescription.includes("chrome") && jobDescription.includes("extension") || jobDescription.includes("shopify extension"))
+				return [
+					{ preference: 1, title: "chrome extension", profile: "frontend", proposalId: "chrome-extension-7", channel: 0, priority: 2 },
+					{ preference: 2, title: "fullstack", profile: "laravel-ruby", proposalId: "full-stack-5", channel: 0, priority: 2 }
+				];
+			if (jobDescription.includes("build responsive") || jobDescription.includes("ui") || jobDescription.includes("user interface"))
+				return [
+					{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 3 },
+					{ preference: 2, title: "design", profile: "frontend", proposalId: "frontend-7", channel: 0, priority: 3 }
+				];
+			if (jobDescription.includes("web development") || jobDescription.includes("website development") || jobDescription.includes("webpage development"))
+				return [
+					{ preference: 1, title: "node", profile: "node-php", proposalId: "full-stack-2", channel: 0, priority: 3 },
+					{ preference: 2, title: "fullstack", profile: "laravel-ruby", proposalId: "full-stack-5", channel: 0, priority: 2 }
+				];
+			if (jobDescription.includes("fullstack") || jobDescription.includes("full stack"))
+				return [
+					{ preference: 1, title: "fullstack", profile: "javascript", proposalId: "full-stack-1", channel: 0, priority: 2 },
+					{ preference: 2, title: "fullstack", profile: "node-php", proposalId: "full-stack-4", channel: 0, priority: 2 }
+				];
+			if (jobDescription.includes("web developer"))
+				return [
+					{ preference: 1, title: "fullstack", profile: "javascript", proposalId: "full-stack-2", channel: 0, priority: 2 },
+					{ preference: 2, title: "fullstack", profile: "laravel-ruby", proposalId: "full-stack-5", channel: 0, priority: 2 },
+				];
+			if (jobDescription.includes("landing page"))
+				return [
+					{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 3 },
+					{ preference: 2, title: "design", profile: "frontend", proposalId: "frontend-7", channel: 0, priority: 3 }
+				];
+			if (jobDescription.includes("frontend") || jobDescription.includes("front end") || jobDescription.includes("responsive") || ` ${jobDescription} `.includes(" css ") || jobDescription.includes("figma to html") || jobDescription.includes("figma"))
+				return [
+					{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 2 },
+					{ preference: 2, title: "design", profile: "frontend", proposalId: "frontend-7", channel: 0, priority: 3 }
+				];
 		}
 		return [
-			// { preference: 1, title: "fullstack", profile: "wp-django", proposalId: "full-stack-5", channel: 0, priority: 4 },
-			// { preference: 2, title: "fullstack", profile: "node-php", proposalId: "full-stack-2", channel: 0, priority: 3 },
-			{ preference: 1, title: "fullstack", profile: "laravel-ruby", proposalId: "full-stack-1", channel: 0, priority: 4 },
-			{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "full-stack-2", channel: 0, priority: 3 },
+			{ preference: 1, title: "fullstack", profile: "javascript", proposalId: "full-stack-1", channel: 0, priority: 3 },
+			{ preference: 2, title: "fullstack", profile: "node-php", proposalId: "full-stack-4", channel: 0, priority: 2 },
 		];
 	}
 }
@@ -570,7 +645,7 @@ window.submitProposal = async function (jobId, countryName, profile, proposalId,
 	}
 	if (countryName == "United States")
 		priority += 3;
-	else if (countryName == "Canada" || countryName == "Australia" || countryName == "Qutar")
+	else if (countryName == "Canada" || countryName == "Australia" || countryName == "Qatar")
 		priority += 2;
 	else if (countryName == "United Kingdom" || countryName == "Switzerland" || countryName == "Sweden")
 		priority += 1;
@@ -667,7 +742,7 @@ window.submitProposal = async function (jobId, countryName, profile, proposalId,
 
 window.myProposals = {
 
-	"asp-1": `Hello 👍👍👍
+	"asp-1": `Hello 👋👋👋
 I am a highly skilled and experienced ASP.NET full-stack developer with 7+ years of experience. I have extensive experience in C# and ASP.NET. And also have experience in React/Vue/Node, Javascript/TypeScript, Web3, Tailwind CSS, REST API/GraphQL/WebSocket and so on.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -680,7 +755,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"full-stack-1": `Hello 👍👍👍
+	"full-stack-1": `Hello 👈👈
 I am a highly skilled and experienced full-stack engineer with 7+ years of experience. I have extensive experience in PHP/Laravel/WordPress, Node/Express/Nest, React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Tailwind CSS, REST API/GraphQL/WebSocket and so on. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -704,7 +779,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"java-spring-1": `Hello 👍👍👍
+	"java-spring-1": `Hello 👈👈👈
 I am a highly skilled and experienced Java full-stack developer with 7+ years of experience. I have extensive experience in Java, Kotlin, Spring Framework, Spring Boot, Hibernate, Maven/Gradle, CI/CD, Microservice, Kubernetes, Docker and so on. And also have experience in React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Web3, Tailwind CSS, REST API/GraphQL/WebSocket and so on.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -716,24 +791,35 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"laravel-1": `Hello 👍👍👍
-I am a highly skilled and experienced PHP full-stack developer with 7+ years of experience. I have extensive experience in PHP and Laravel. And also have experience in React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket and so on. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
-As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
+	"laravel-1": `
+Hello, 👍👍
 
-Here are some of my past projects:
-- Hire captains online
-https://thecaptapp.com    (Laravel + Vue + Bootstrap)
-- Vitamin Shop
-https://www.vitawake.co.uk    (Laravel + Wix)
-- Sport Tournament
-https://padelintour.com    (Laravel + Tailwind CSS)
+I am a highly skilled and experienced PHP full-stack developer with over 7 years of expertise. My proficiency lies in PHP and Laravel, and I also possess extensive knowledge in React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket, and more. I have mastered W3C standard web protocols and excel in mobile-responsive and browser-sensitive design.
 
-I am a dedicated and self-motivated professional with a strong attention to detail. I am also a good communicator and can collaborate effectively with remote teams.
-I look forward to the opportunity to work with you.
+As a full-stack developer, I have a wealth of experience in both backend and frontend development, including database management, cloud management, web hosting, SEO, and other related areas. I am confident in my ability to assist with any type of work you require.
+
+Allow me to highlight a few of my past projects:
+
+Hire captains online
+
+Website: thecaptapp.com
+Technologies used: Laravel, Vue, Bootstrap
+Vitamin Shop
+
+Website: vitawake.co.uk
+Technologies used: Laravel, Wix
+Sport Tournament
+
+Website: padelintour.com
+Technologies used: Laravel, Tailwind CSS
+I am a dedicated and self-motivated professional with a keen eye for detail. Effective communication and seamless collaboration with remote teams are among my strengths.
+
+I eagerly anticipate the opportunity to work with you.
+
 Thank you.`,
 
 
-	"django-flask-1": `Hello 👍👍👍
+	"django-flask-1": `Hello 👋👋👋
 I am a highly skilled and experienced Python full-stack developer with 3+ years of experience. I have extensive experience in Python, Django and Flask. And also have experience in React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket and so on. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -742,25 +828,24 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"ruby-1": `Hello 👍👍👍
-I am a highly skilled and experienced Ruby on Rails full-stack developer with 3+ years of experience. I have extensive experience in Ruby on Rails. And also have experience in React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket and so on. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
+	"ruby-1": `Hello 👍👍
+I am an experienced Ruby on Rails full-stack developer with 3+ years of expertise. My skills extend to React/Next/Gatsby, Vue/Nuxt, JavaScript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket, and more. I have a strong command of W3C web protocols and mobile-responsive design.
 
-As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
+With extensive experience in backend and frontend development, database management, cloud management, web hosting, and SEO, I am confident in my ability to assist with any project.
 
 Here are some of my past projects:
-	Marketplace for Hotel Reservations
-https://www.roomertravel.com    (Ruby On Rails)
-- Coffee supply chain platyform
-https://crema.co    (Ruby on Rails + Vue)
-- Events Management System
-https://eventstaffing.co.uk    (Ruby on Rails)
 
-I am a dedicated and self-motivated professional with a strong attention to detail. I am also a good communicator and can collaborate effectively with remote teams.
-I look forward to the opportunity to work with you.
-Thank you.`,
+Marketplace for Hotel Reservations: roomertravel.com (Ruby on Rails)
+Coffee Supply Chain Platform: crema.co (Ruby on Rails + Vue)
+Events Management System: eventstaffing.co.uk (Ruby on Rails)
+As a dedicated and detail-oriented professional, I excel in communication and remote team collaboration.
+
+I am excited about the opportunity to work with you.
+
+Thank you`,
 
 
-	"wordpress-1": `Hello 👍👍👍
+	"wordpress-1": `Hello 👋👋👋
 I am a highly skilled and experienced WordPress developer with 7+ years of experience. I have extensive experience in PHP, WordPress and WooCommerce. And I am excellent in frontend development including HTML/CSS, Javascript, React/Vue and Responsive Design. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design. I am confident in my ability to be helpful for any kind of your work.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on.
 
@@ -777,7 +862,8 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"full-stack-2": `Hi. As an experienced web developer with expertise in both frontend and backend development, I believe I am an ideal candidate for this project.
+	"full-stack-2": `Hi. 👍
+	As an experienced web developer with expertise in both frontend and backend development, I believe I am an ideal candidate for this project.
 
 Over the years, I have honed my skills in creating responsive and visually appealing user interfaces using modern frontend technologies such as HTML, CSS, JavaScript, React, Vue, Tailwind CSS etc. Additionally, my proficiency in backend development with languages like PHP, Python, Javascript and frameworks like Laravel, WordPress, Django, Express enables me to build robust and scalable web applications.
 
@@ -806,28 +892,34 @@ Looking forward to the possibility of working together.
 Best regards`,
 
 
-	"laravel-2": `Hi. As an experienced PHP full stack developer with proficiency in Laravel and Vue/React, I am confident in my ability to deliver exceptional results for your project.
+	"laravel-2": `Hi ,👈👈👈
+	As a highly skilled PHP full-stack developer with expertise in Laravel and Vue/React, I am confident in my ability to deliver exceptional results for your project. With years of experience in Laravel, I have successfully built and maintained robust, scalable, and secure web applications. Additionally, my proficiency in Vue and React enables me to create dynamic and interactive user interfaces that enhance the overall user experience.
 
-With years of experience in Laravel, I have successfully built and maintained complex web applications, ensuring they are robust, scalable, and secure. My expertise extends to frontend development using Vue and React, allowing me to create dynamic and interactive user interfaces that enhance the overall user experience.
+Here are some of my notable past projects:
 
-You can check my past projects here:
-- Company/Service Portal
-https://pichler.pro    (Laravel)
-- Betting:
-https://www.bsmma.com    (Laravel + Vue)
-- Video Ad management
-https://openmedialogic.com    (Laravel + Bootstrap + Three.js)
+Company/Service Portal
 
-Effective communication is paramount to a successful project, and I prioritize regular and transparent communication with my clients. I am responsive to feedback and am committed to understanding and fulfilling your specific requirements.
+Website: pichler.pro
+Technologies used: Laravel
+Betting Platform
 
-I am confident that my technical skills, combined with my attention to detail and problem-solving abilities, make me the ideal candidate for your project. I am eager to discuss the project in more detail and showcase how my expertise can contribute to its success.
+Website: bsmma.com
+Technologies used: Laravel, Vue
+Video Ad Management
+
+Website: openmedialogic.com
+Technologies used: Laravel, Bootstrap, Three.js
+I prioritize effective communication throughout the project, ensuring regular and transparent updates. I am responsive to feedback and committed to understanding and fulfilling your specific requirements.
+
+With my technical skills, attention to detail, and problem-solving abilities, I am confident that I am the ideal candidate for your project. I am eager to discuss the project in more detail and showcase how my expertise can contribute to its success.
 
 Thank you for considering my proposal. I look forward to the opportunity to work with you.
 
 Best regards`,
 
 
-	"wordpress-2": `Hi. As an experienced WordPress developer with a strong background in various themes and plugins, I believe I possess the skills and expertise necessary to successfully complete your project.
+	"wordpress-2": `Hi. 👉👉👉
+	As an experienced WordPress developer with a strong background in various themes and plugins, I believe I possess the skills and expertise necessary to successfully complete your project.
 
 Throughout my career, I have worked extensively with WordPress, developing custom themes and implementing plugins to meet clients' unique requirements. I am well-versed in HTML, CSS, and PHP, allowing me to create visually stunning and functional websites.
 
@@ -846,84 +938,85 @@ I would be delighted to discuss your project further. Thank you for considering 
 Best regards`,
 
 
-	"blockchain-4": `Hello 👍👍👍
-I am a highly skilled and experienced Web3/Blockchain developer. I have solid experience in Web3/Blockchain development including Web3, Smart Contract, Solidity, NFT and so on. And also experienced in modern Web/Web3 technologies including React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket and so on.
-As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
+	"blockchain-4": `Hello 🙏🙏🙏
+As a highly skilled and experienced Web3/Blockchain developer, I am excited to offer my expertise for your project. With a solid background in Web3/Blockchain development, including Web3, Smart Contracts, Solidity, and NFTs, I am well-versed in the latest technologies and practices in this field. Additionally, I have extensive experience in modern Web/Web3 technologies such as React/Next/Gatsby, Vue/Nuxt, JavaScript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket, and more.
 
-Here are some of my past Web3/Blockchain projects:
-- DeFi
-farmhero.io    (React + Web3)
-- NFT Mint & Marketplace
-wizard.financial    (React + Bootstrap + Web3)
-- NFT Mint
-https://studio.manifold.xyz    (Vue.js + Tailwind CSS + Web3)
-- NFT Game
-dragonkart.com    (Vue + Nuxt + Node + Tailwind CSS + Web3)
+As a full-stack developer, I possess a wealth of experience in both backend and frontend development, database management, cloud management, web hosting, SEO, and other related areas. I am confident in my ability to provide valuable assistance for any kind of work you require.
 
-I am a dedicated and self-motivated professional with a strong attention to detail. I am confident in my ability to meet project deadlines and deliver high-quality work. I am also a good communicator and can collaborate effectively with remote teams.
-I look forward to the possibility of working with you.
+Allow me to highlight a few of my past Web3/Blockchain projects:
+
+DeFi Platform
+
+Website: farmhero.io
+Technologies used: React, Web3
+NFT Mint & Marketplace
+
+Website: wizard.financial
+Technologies used: React, Bootstrap, Web3
+NFT Mint Platform
+
+Website: studio.manifold.xyz
+Technologies used: Vue.js, Tailwind CSS, Web3
+NFT Game
+
+Website: dragonkart.com
+Technologies used: Vue, Nuxt, Node, Tailwind CSS, Web3
+I am a dedicated and self-motivated professional with a keen eye for detail. Meeting project deadlines and delivering high-quality work are my top priorities. Effective communication and seamless collaboration with remote teams are among my strengths.
+
+I am excited about the possibility of working with you and contributing to the success of your project.
 Thank you.`,
 
 
-	"react-4": `Hello 👍👍👍
-I am a highly skilled full-stack developer with extensive experience in React/Next/Gatsby, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket and so on.
-As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
+	"react-4": `Hello ,❤
+I am a highly skilled full-stack developer with extensive experience in a wide range of technologies including React, Next, Gatsby, JavaScript, TypeScript, Node, Express, Nest, Tailwind CSS, REST API, GraphQL, WebSocket, and more. With my expertise in both backend and frontend development, database management, cloud management, web hosting, and SEO, I am confident in my ability to provide valuable assistance for any kind of project.
 
-Here are some of my past projects:
-- Grow Builder
-https://www.zuut.co    (React + Next + Node + Express + MaterialUI + Firebase + Vercel)
-- Office Rent
-https://maison.work    (React + Next + Node + Express + MaterialUI + Heroku)
-- Company/Service Portal
-https://ndb.money    (React + Gatsby + AWS Amplify)
-https://ndb.technology    (React + Gatsby + AWS Amplify)
-- Token Sale/Auction Service
-https://www.nyyu.io    (Spring Boot + React + Gatsby + GraphQL + Oracle Database + AWS)
+Here are some of my notable past projects:
 
-I am a dedicated and self-motivated professional with a strong attention to detail. I am also a good communicator and can collaborate effectively with remote teams.
-I look forward to the possibility of working with you.
+Grow Builder - A web application developed using React, Next, Node, Express, MaterialUI, Firebase, and deployed on Vercel.  https://www.zuut.co 
+
+Office Rent - A web platform built with React, Next, Node, Express, MaterialUI, and hosted on Heroku.  https://maison.work
+
+Company/Service Portal - Developed using React, Gatsby, and AWS Amplify, this project includes two portals: https://ndb.money and https://ndb.technology.
+
+Token Sale/Auction Service - A comprehensive platform created with Spring Boot, React, Gatsby, GraphQL, Oracle Database, and hosted on AWS.  https://www.nyyu.io
+
+As a dedicated and self-motivated professional, I pay strong attention to detail and possess excellent communication skills. I am adept at collaborating effectively with remote teams, ensuring seamless project execution.
+
+I am excited about the opportunity to work with you and contribute my expertise to your project. Please feel free to reach out to discuss your requirements further.
 Thank you.`,
 
 
-	"node-4": `Hello 👍👍👍
-I am a highly skilled full-stack developer with extensive experience in React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket and so on.
-As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
+	"node-4": `Hi , 🤝🤝🤝.
+	I hope this message finds you well. I am writing to express my interest in working with you as a Node.js developer. With my extensive experience in Node.js, Express, TypeScript, and database management, I am confident in my ability to contribute to your project.
 
-Here are some of my past projects:
-- Grow Builder
-https://www.zuut.co    (React + Next + Node + Express + MaterialUI + Firebase + Vercel)
-- Office Rent
-https://maison.work    (React + Next + Node + Express + MaterialUI + Heroku)
-- Company/Service Portal
-https://ndb.money    (React + Gatsby + AWS Amplify)
-https://ndb.technology    (React + Gatsby + AWS Amplify)
-- Token Sale/Auction Service
-https://www.nyyu.io    (Spring Boot + React + Gatsby + GraphQL + Oracle Database + AWS)
-- NFT Mint
-https://studio.manifold.xyz    (Vue + Tailwind CSS + Web3)
-- NFT Game
-https://dragonkart.com    (Vue + Nuxt + Node + Express + Tailwind CSS + Web3)
+As a Node.js developer, I have successfully completed several projects in the past, showcasing my expertise in building scalable and efficient backend systems. Here is an example of my work:
 
-I am a dedicated and self-motivated professional with a strong attention to detail. I am also a good communicator and can collaborate effectively with remote teams.
-I look forward to the possibility of working with you.
-Thank you.`,
+Token Sale/Auction Service - I developed a comprehensive platform using Node.js, Express, GraphQL, and Oracle Database. This platform facilitated secure token sales and auctions, providing a seamless experience for users. The project involved implementing complex business logic, integrating with external APIs, and ensuring high performance and security. https://www.zuut.co , https://maison.work , 
+
+I am dedicated, self-motivated, and pay great attention to detail. I believe effective communication is crucial, and I am skilled at collaborating with remote teams. I am confident that my skills and experience make me a valuable asset for your project.
+
+Thank you for considering my bid. I look forward to the opportunity to work with you.`,
 
 
-	"vue-4": `Hello 👍👍👍
-I am a highly skilled full-stack developer with extensive experience in Vue, Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket  and so on.
-As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
+	"vue-4": `Hello, 👌👌👌👌👌
 
-Here are some of my past projects:
-https://thecaptapp.com    (Laravel + Vue + Bootstrap)
-https://studio.manifold.xyz    (Vue + Tailwind CSS + Web3)
-https://dragonkart.com    (Vue + Nuxt + Node + Express + Tailwind CSS + Web3)
+I am a highly skilled frontend developer with extensive experience in Vue.js, JavaScript/TypeScript, and frontend development. I have a strong background in building robust and scalable web applications using Vue.js and its ecosystem.
 
-I am a dedicated and self-motivated professional with a strong attention to detail. I am also a good communicator and can collaborate effectively with remote teams.
-I look forward to the possibility of working with you.
-Thank you.`,
+As a frontend developer, I specialize in Vue.js and have a deep understanding of its core concepts and best practices. I have successfully delivered projects using Vue.js, creating responsive and user-friendly interfaces, implementing complex UI/UX designs, and optimizing performance for a seamless user experience.
+
+Here are some of my past projects that showcase my skills in Vue.js:
+
+The Capt App - Built with Vue.js and Bootstrap.
+Studio Manifold - Developed using Vue.js and Tailwind CSS.
+Dragon Kart - Created with Vue.js and Nuxt.js.
+I am dedicated, self-motivated, and pay strong attention to detail. I am an excellent communicator and have experience collaborating effectively with remote teams. I am confident in my ability to contribute to frontend development tasks and provide valuable insights and solutions.
+
+If you choose to work with me, you can expect a highly skilled and reliable frontend developer who is committed to delivering high-quality code and meeting project deadlines. I am excited about the possibility of working together and bringing your frontend vision to life.
+
+Thank you for considering my bid. I look forward to discussing the project further and answering any questions you may have.`,
 
 
-	"svelte-4": `Hello 👍👍👍
+	"svelte-4": `Hello ✨
 I am a highly skilled full-stack developer with extensive experience in Svelte/SvelteKit, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket and so on.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -932,7 +1025,8 @@ I look forward to the possibility of working with you.
 Thank you.`,
 
 
-	"full-stack-4": `Hi, I hope this proposal finds you well. I am thrilled to submit my application for your website development project. As a highly skilled and experienced Full Stack Developer, I believe I am the perfect fit for your project.
+	"full-stack-4": `Hi, 👌
+	I hope this proposal finds you well. I am thrilled to submit my application for your website development project. As a highly skilled and experienced Full Stack Developer, I believe I am the perfect fit for your project.
 
 With 8+ years of industry experience, I have successfully delivered numerous web development projects, showcasing my expertise in both front-end and back-end technologies. I am proficient in HTML, CSS, JavaScript, and have a strong command over popular frameworks such as React and Vue.
 
@@ -947,7 +1041,8 @@ I would love the opportunity to discuss your project in more detail and provide 
 Best regards`,
 
 
-	"react-5": `Hi. As an experienced JavaScript full stack developer with expertise in React and MERN stacks(MongoDB, Express.js, React, Node.js), I am confident in my ability to deliver exceptional results for your project.
+	"react-5": `Hi. 👈👈
+	As an experienced JavaScript full stack developer with expertise in React/Next.js and MERN stacks(MongoDB, Express.js, React, Node.js), I am confident in my ability to deliver exceptional results for your project.
 
 With a strong background in both frontend and backend development, I possess the skills necessary to build robust and scalable web applications. My experience with the MERN stacks allows me to develop efficient and interactive user interfaces using React and Next/Gatsby, while also implementing server-side functionalities using various backend stacks such as Node/Express/Nest, PHP/Laravel, Python/Django and so on.
 
@@ -967,7 +1062,8 @@ I would be thrilled to discuss your project further and showcase my portfolio of
 Best regards`,
 
 
-	"node-5": `Hi. As an experienced JavaScript full stack developer with expertise in React, Vue, and Node, I am confident in my ability to deliver exceptional results for your project.
+	"node-5": `Hi. 👋👋👋
+	As an experienced JavaScript full stack developer with expertise in React, Vue, and Node, I am confident in my ability to deliver exceptional results for your project.
 
 With a strong background in frontend and backend development, I possess the skills necessary to create dynamic and engaging web applications. I have extensive experience in developing responsive user interfaces using React and Vue, ensuring seamless user experiences across different devices and platforms.
 
@@ -980,7 +1076,8 @@ I would be thrilled to discuss your project in more detail. Thank you for consid
 Best regards`,
 
 
-	"vue-5": `Hi. As an experienced JavaScript full stack developer with expertise in Vue and MEVN (MongoDB, Express.js, Vue.js, Node.js) stacks, I am confident in my ability to deliver exceptional results for your project.
+	"vue-5": `Hi. 👋👋👋
+	As an experienced JavaScript full stack developer with expertise in Vue and MEVN (MongoDB, Express.js, Vue.js, Node.js) stacks, I am confident in my ability to deliver exceptional results for your project.
 
 With a strong background in both frontend and backend development, I possess the skills necessary to build robust and scalable web applications. My experience with the MEVN stacks allows me to develop efficient and interactive user interfaces using Vue and Nuxt, while also implementing server-side functionalities using various backend stacks such as Node/Express/Nest, PHP/Laravel, Ruby on Rails and so on.
 
@@ -998,7 +1095,8 @@ I would be thrilled to discuss your project further and showcase my portfolio of
 Best regards`,
 
 
-	"svelte-5": `Hi. I am an experienced JavaScript developer. With several years of experience in web development, I am confident that I have the skills and expertise needed to complete this project successfully.
+	"svelte-5": `Hi.👋👋👋
+	 I am an experienced JavaScript developer. With several years of experience in web development, I am confident that I have the skills and expertise needed to complete this project successfully.
 
 As a Svelte developer, I have worked on various projects ranging from simple landing pages to complex web applications. I am proficient in HTML, CSS, JavaScript and TypeScript, and have a strong understanding of front-end development.
 
@@ -1028,7 +1126,7 @@ I am available for a call to discuss your project in more detail or to provide a
 Thank you for considering my proposal. I am excited about the opportunity to work with you and contribute to the success of your blockchain project.`,
 
 
-	"full-stack-5": `Hi. 👍
+	"full-stack-5": `Hi. ✨
 I am a skilled Full Stack Developer with 7+ years of experience and a proven track record of delivering successful web development projects.
 
 Here's why I believe I am the right fit for your project:
@@ -1042,7 +1140,7 @@ Thank you for considering my proposal. I look forward to discussing the project 
 Best regards`,
 
 
-	"ecommerce-7": `Hello 👍👍👍
+	"ecommerce-7": `Hello 👋
 I am a highly skilled and experienced Ecommerce developer with 5+ years of experience. I have extensive experience in Shopify and Ecommerce Website development. And I am excellent in frontend development including HTML/CSS, Javascript, React/Vue and Responsive Design. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -1065,7 +1163,7 @@ I look forward to the possibility of working with you.
 Thank you.`,
 
 
-	"frontend-7": `Hello 👍👍👍
+	"frontend-7": `Hello ✨✨✨✨✨
 I am a highly skilled and experienced frontend developer with 7+ years of experience. I have extensive experience in React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket, SEO and so on.
 I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
 I am confident in my ability to be helpful for any kind of your work.
@@ -1093,7 +1191,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"shopify-7": `Hello 👍👍👍
+	"shopify-7": `Hello 👋
 I am a highly skilled and experienced Shopify developer with 4+ years of experience. I have extensive experience in Shopify/Shopify Plus development, API integration, theme customization, Response design, and so on. And I am excellent in frontend development including HTML/CSS, Javascript, React/Vue and Responsive Design. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -1108,7 +1206,7 @@ I look forward to the possibility of working with you.
 Thank you.`,
 
 
-	"webflow-7": `Hello 👍👍👍
+	"webflow-7": `Hello 👋
 I am a highly skilled and experienced Webflow developer. I have strong background and solid experience in Webflow and HTML/CSS. I have extensive experience in building landing page and Ecommerce websites. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design. I am confident in my ability to be helpful for any kind of your work.
 
 You can check my past Webflow projects:
@@ -1121,7 +1219,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"chrome-extension-7": `Hello 👍
+	"chrome-extension-7": `Hello 👋
 I am an experienced Chrome Extension developer interested in your project. With a strong background in JavaScript, HTML, CSS, and the Chrome Extension API, I am confident in my ability to meet your requirements effectively.
 
 As an experienced front-end developer, I have extensive experience in HTML/CSS, Javascript/TypeScript, React/Vue/Node, Tailwind CSS, REST API/GraphQL/WebSocket and so on.
@@ -1131,7 +1229,8 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"frontend-8": `Hi. As an experienced individual frontend developer, I possess the skills and expertise required to successfully complete your project.
+	"frontend-8": `Hi.👋👋
+	 As an experienced individual frontend developer, I possess the skills and expertise required to successfully complete your project.
 
 With 6+ years of experience, I am proficient in HTML, CSS, JavaScript, and modern frontend frameworks like React and Vue.
 
@@ -1160,7 +1259,8 @@ I would be happy to discuss your project further or answer any questions you may
 Thank you for considering my proposal. I look forward to the opportunity to work with you and bring your project to life.`,
 
 
-	"ecommerce-8": `Hi. I am an experience developer with a strong background in ecommerce development and extensive experience in building ecommerce, Shopify, WordPress websites, I possess the skills necessary to create visually appealing, user-friendly, and high-performing online stores.
+	"ecommerce-8": `Hi.✨✨✨
+	 I am an experience developer with a strong background in ecommerce development and extensive experience in building ecommerce, Shopify, WordPress websites, I possess the skills necessary to create visually appealing, user-friendly, and high-performing online stores.
 
 Throughout my career, I have successfully completed numerous ecommerce projects, earning positive feedback from clients for my technical expertise, attention to detail, and ability to meet project deadlines. I am dedicated to delivering exceptional quality work while ensuring the highest level of customer satisfaction.
 		
@@ -1175,7 +1275,8 @@ I would be delighted to discuss your project further and showcase my portfolio o
 Best regards`,
 
 
-	"shopify-8": `Hi. I am an experience developer with a strong background in Shopify development and extensive experience in building ecommerce websites, I possess the skills necessary to create visually appealing, user-friendly, and high-performing online stores. I am proficient in customizing Shopify themes, implementing payment gateways, and optimizing the overall shopping experience for customers.
+	"shopify-8": `Hi 👈. 
+	I am an experience developer with a strong background in Shopify development and extensive experience in building ecommerce websites, I possess the skills necessary to create visually appealing, user-friendly, and high-performing online stores. I am proficient in customizing Shopify themes, implementing payment gateways, and optimizing the overall shopping experience for customers.
 
 Throughout my career, I have successfully completed numerous Shopify projects, earning positive feedback from clients for my technical expertise, attention to detail, and ability to meet project deadlines. I am dedicated to delivering exceptional quality work while ensuring the highest level of customer satisfaction.
 
@@ -1196,7 +1297,7 @@ I would be delighted to discuss your project further and showcase my portfolio o
 Best regards`,
 
 
-	"webflow-8": `Hi. 👍
+	"webflow-8": `Hi. 🌟🌟
 Very excited to submit my proposal for your Webflow project. As a webflow specialist, I have extensive experience in creating visually stunning and highly functional websites using this platform.
 
 My approach to web design is centered around understanding your unique needs and creating a custom solution that exceeds your expectations. Whether you need a simple landing page or a complex e-commerce site, I have the expertise to deliver a website that not only looks great but also performs well.
@@ -1226,8 +1327,28 @@ With your guidance, I will meticulously analyze the target website's structure a
 I am excited about the opportunity to work with you and demonstrate my expertise in web scraping. I look forward to further discussing the project and finding the best approach to achieve your desired outcomes. Thanks`,
 
 
+"php-laravel-3" : `Hi 👋👋, client.
+I am excited to apply for this Full stack Laravel-PHP Developer role after reading your post.
+I've read in detail about your description for this role.
 
-	"automation-9": `Hi. As an experienced expert in this field, I have the skills and knowledge necessary to successfully complete your project.
+I am excited to express my interest in the Full Stack Developer position you have posted. With a passion for cutting-edge technology and API development and API integration, I believe I am well-suited for this project. I have extensive experience in both frontend and backend development, and I am eager to contribute to your innovative project.
+I understand this role's responsible and also I can satisfy all of these requirements with my deep-experience in PHP/Vue.
+There are some my previous work URL - PHP/(Vue).
+Please take a moment to review them:
+
+https://turn2me.ie
+https://shinebrandseeds.com
+
+
+I am familiar with Vue as well as Laravel to build productive web application.
+
+I am a proactive Full-Stack Laravel\PHP Developer ready to dive into the world of Lead Management and Intelligence Gathering Software and contribute to your innovative project. 
+I look forward to collaborating with your dedicated team of developers.
+
+Thank you for considering my bid. I am eager to discuss further details and demonstrate how my skills and experience align with your project's requirements.` ,
+
+	"automation-9": `Hi. 👋
+	As an experienced expert in this field, I have the skills and knowledge necessary to successfully complete your project.
 
 With 5+ years of experience in web & desktop automation, I am proficient in using tools like Selenium WebDriver, Puppeteer, AutoIt, UiPath and Power Automate.
 
@@ -1247,11 +1368,151 @@ I am eager to work with you and provide efficient and reliable desktop/web autom
 
 
 
-	"bot-auto-9": `Hello 👍👍👍
+	"bot-auto-9": `Hello ✨✨✨
 I am an experienced programmer and automation expert. I have extensive experience in various kinds of automation works.
 I am a dedicated and self-motivated professional with a strong attention to detail. I am confident in my ability to be helpful for any kind of your work.
 I look forward to the possibility of working with you.
 Thank you.`,
+	"api-integration-database-1" : `Hi , there 😎.
+I am an expert backend developer specializing in database API development. With a proven track record of delivering exceptional solutions, I am confident in my ability to meet your requirements and provide a robust and scalable backend solution.
 
+Skills:
+
+Backend development expertise
+Database design and optimization proficiency
+API development and seamless integration
+Performance optimization techniques
+Implementation of robust security measures
+Thorough testing and meticulous debugging
+Experience: With extensive experience spanning 7 years in backend development, I have successfully completed numerous projects, delivering efficient and reliable solutions. I possess comprehensive knowledge of various databases, including MySQL, PostgreSQL, MongoDB, and more.
+
+Approach:
+
+I immerse myself in understanding your requirements and project scope.
+I craft an optimized database structure for efficient data storage and retrieval.
+I can develop a secure and scalable API tailored precisely to your needs.
+And conduct rigorous testing and meticulous debugging to ensure a flawless solution.
+Will provide comprehensive documentation and ongoing support for seamless integration and future maintenance.
+Timeline: Rest assured, I am committed to delivering top-notch work within the agreed-upon timeframe.
+
+Portfolio: Please find examples of my previous work in my portfolio here.
+https://www.misstravel.com
+http://allpositions.ru
+
+I am thrilled about the opportunity to work on this project and contribute my expertise to its success. Should you have any inquiries or wish to discuss further, please feel free to reach out. Thank you for considering my bid.
+
+Best regards` ,
+
+"api-integration-database-2" : `Greetings! 😎
+
+As an accomplished backend developer specializing in database API development, I bring a wealth of expertise to the table. Throughout my career, I have consistently delivered exceptional solutions, and I am confident in my ability to meet your requirements with a robust and scalable backend solution.
+
+My Skill Set:
+
+🔹 Proficiency in backend development 🔹 Expertise in database design and optimization 🔹 Seamless integration of APIs 🔹 Implementation of performance optimization techniques 🔹 Strong focus on robust security measures 🔹 Thorough testing and meticulous debugging
+
+Experience:
+
+With a solid background spanning over 7 years in backend development, I have successfully completed numerous projects, consistently delivering efficient and reliable solutions. I possess comprehensive knowledge of various databases, including MySQL, PostgreSQL, MongoDB, and more.
+
+My Approach:
+
+🔸 I immerse myself in understanding your requirements and project scope. 🔸 I meticulously craft an optimized database structure for efficient data storage and retrieval. 🔸 I develop secure and scalable APIs tailored precisely to your needs. 🔸 Rigorous testing and meticulous debugging ensure a flawless solution. 🔸 I provide comprehensive documentation and ongoing support for seamless integration and future maintenance.
+
+Timeline:
+
+Rest assured, I am committed to delivering top-notch work within the agreed-upon timeframe.
+
+Portfolio:
+
+Please take a moment to explore my portfolio, which showcases examples of my previous work:
+
+🔗 https://urdumaza.ca/chat/index.php
+🔗 https://shop.goodhealthstore.in
+🔗 https://www.drterrywillard.com
+
+I am thrilled about the opportunity to work on this project and contribute my expertise to its success. If you have any inquiries or would like to discuss further, please feel free to reach out. Thank you for considering my bid.
+
+Best regards.` ,
+
+ "database-mongodb" : `
+Greetings! 😍😍
+
+I am an experienced backend developer specializing in database API development, bringing a wealth of expertise to the table. Throughout my career, I have consistently delivered exceptional solutions, and I am confident in my ability to meet your requirements with a robust and scalable backend solution.
+
+Here is a summary of my skill set:
+
+Proficiency in backend development
+Expertise in database design and optimization
+Seamless integration of APIs
+Implementation of performance optimization techniques
+Strong focus on robust security measures
+Thorough testing and meticulous debugging
+With over 7 years of experience in backend development, I have successfully completed numerous projects, consistently delivering efficient and reliable solutions. I possess comprehensive knowledge of various databases, including MySQL, PostgreSQL, MongoDB, and more.
+
+My approach to projects involves the following steps:
+
+Immersing myself in understanding your requirements and project scope.
+Meticulously crafting an optimized database structure for efficient data storage and retrieval.
+Developing secure and scalable APIs tailored precisely to your needs.
+Conducting rigorous testing and meticulous debugging to ensure a flawless solution.
+Providing comprehensive documentation and ongoing support for seamless integration and future maintenance.
+Rest assured, I am committed to delivering top-notch work within the agreed-upon timeframe.
+
+Please take a moment to explore my portfolio, which showcases examples of my previous work:
+
+🔗 https://urdumaza.ca/chat/index.php
+🔗 https://shop.goodhealthstore.in
+🔗 https://www.drterrywillard.com
+
+I am thrilled about the opportunity to work on this project and contribute my expertise to its success. If you have any inquiries or would like to discuss further, please feel free to reach out. Thank you for considering my bid.
+
+Best regards.
+` ,
+	"react-next-mern-1" : `Hi, there 😎😎.
+As a talented web developer , I am appling on your project after reading your post.
+In my previous role, I had the opportunity to work extensively with the React-Next-Gatsby - MERN stack. This stack allowed me to build modern and efficient web applications from front to back.
+
+I utilized React as the core front-end library, leveraging its component-based architecture to create reusable UI elements and manage state effectively. With Next.js, I implemented server-side rendering (SSR) and static site generation (SSG) to improve performance and SEO optimization. This framework also facilitated automatic code splitting and routing, making development more efficient.
+
+For static website development, I utilized Gatsby, which provided pre-rendering capabilities, optimized image loading, and seamless data fetching. This allowed me to build fast and scalable static websites with ease.
+
+On the back end, I worked with the MERN stack, which stands for MongoDB, Express.js, React, and Node.js. I used MongoDB as the NoSQL database to store and retrieve data in a flexible JSON-like format. Express.js served as the web application framework, enabling me to handle HTTP requests and build APIs efficiently. Node.js acted as the runtime environment, allowing me to run JavaScript code on the server-side.
+
+Please take a moment to review my previous works.
+
+https://www.catgirl.io
+https://www.misstravel.com
+https://www.thecustommovement.com
+
+Overall, my experience with the React-Next-Gatsby - MERN stack has equipped me with the skills to build full-stack web applications, optimize performance, and ensure a seamless user experience. I am confident in my ability to leverage these technologies to deliver high-quality solutions for your project.
+Looking forward to hearing from you.
+Best,` ,
+
+ "web-development-1" : `Dear Hiring Manager,
+
+I am writing to express my interest in the position of website developer for frontend and backend development at your company. With my strong skills and experience in this stack, I believe I would be a valuable asset to your team.
+
+I have a solid background in frontend development, including proficiency in HTML, CSS, and JavaScript. I am well-versed in modern frontend frameworks such as React and Angular, and have a keen eye for design and user experience. I am confident in my ability to create visually appealing and responsive websites that meet the needs of clients and end-users.
+
+In addition to frontend development, I also have extensive experience in backend development. I am skilled in programming languages such as Python, PHP, and Node.js, and have worked with various backend frameworks and technologies. I am proficient in database management systems like MySQL and MongoDB, and have a strong understanding of RESTful APIs and server-side development.
+
+What sets me apart is my ability to seamlessly integrate frontend and backend technologies to create robust and efficient web applications. I have a deep understanding of the full development cycle, from conceptualization and design to implementation and deployment. I am comfortable working in both agile and waterfall development environments, and have a proven track record of delivering high-quality projects on time and within budget.
+
+Furthermore, I am a highly collaborative team player who thrives in a fast-paced and dynamic work environment. I am always eager to learn and stay up-to-date with the latest industry trends and best practices. I am confident that my strong problem-solving skills, attention to detail, and ability to communicate effectively would make me a valuable addition to your development team.
+
+Please take a moment to review my previous works.
+
+https://www.catgirl.io
+https://www.misstravel.com
+https://www.thecustommovement.com
+
+Thank you for considering my application. I would welcome the opportunity to discuss how my skills and experience align with your company's needs.
+I look forward to the possibility of working with you.
+
+Sincerely.
+
+
+` ,
 
 }
