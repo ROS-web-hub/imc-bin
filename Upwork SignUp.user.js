@@ -6,7 +6,7 @@
 // @author       Valloon
 // @match        https://www.upwork.com/*
 // @match        http://web.valloon.me/*
-// @match        http://localhost/*
+// @match        http://146.19.170.48/*
 // @icon         https://www.upwork.com/favicons.ico
 // @grant        unsafeWindow
 // @grant        GM_setValue
@@ -19,7 +19,7 @@
 // @require http://code.jquery.com/jquery-latest.js
 
 
-const SERVER_URL = "http://localhost";
+const SERVER_URL = "http://146.19.170.48";
 // const SERVER_URL = "http://web.valloon.me";
 const CHANNEL = 0;
 const DEBUG_MODE = 0;
@@ -561,6 +561,8 @@ const HOME_URL=`${SERVER_URL}/api/v2/account/history/today`;
             } else if (location.pathname.endsWith('/nx/create-profile/certifications')) {
                 document.querySelector("button[data-test=skip-button]")?.click();
             } else if (location.pathname.endsWith('/nx/create-profile/location')) {
+                unsafeWindow.$nuxt.$store._vm.$data.$$state['onboarding-context'].dateOfBirth=unsafeWindow.setProfile({}).dateOfBirth;
+                await new Promise(resolve => setTimeout(resolve, 100));
                 if(!unsafeWindow.$nuxt.$store._vm.$data.$$state['mini-profile'].profileTitle){
                     location.href="title";
                     return;
@@ -611,7 +613,7 @@ const HOME_URL=`${SERVER_URL}/api/v2/account/history/today`;
                     }
                     if (document.querySelectorAll("button.fe-upload-btn.upload-btn img").length) break;
                     try{
-                        let response = await fetch(`${SERVER_URL}/script/${signupInfo.photoFiilename}`);
+                        let response = await fetch(`${SERVER_URL}/script/${signupInfo.photoFilename}`);
                         let data = await response.blob();
                         let metadata = {
                             type: 'image/jpeg'
