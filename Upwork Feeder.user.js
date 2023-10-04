@@ -266,7 +266,7 @@ const CHANNELS = 1;
             alertMessage(error);
         }
     } else if (location.pathname.includes('/proposals/job/')) {
-        exitTimeout=60;
+        exitTimeout=80;
         let applyData=GM_getValue("applyData");
         let checkBreakConfirmed;
         let scrollToBottomTimeout = setTimeout(function () { unsafeWindow.scrollTo(0, document.body.scrollHeight); }, 6000);
@@ -385,9 +385,8 @@ const CHANNELS = 1;
                 let hourlyRateInput = document.querySelector("#step-rate");
                 let projectModeRadio = document.querySelectorAll("input[type=radio][name=milestoneMode]")[1];
                 let fixedBudgetInput = document.querySelector("#charged-amount-id");
-                let rateIncreaseDropdown = document.querySelector(".sri-form-card");
 
-                if (hourlyRateInput) {      // if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 1) {
+                if (hourlyRateInput) {		// if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 1) {
                     if (proposalData.hourlyRate) {
                         vueData.chargedAmount = proposalData.hourlyRate;
                         console.log("Hourly Rate Change into: " + proposalData.hourlyRate);
@@ -395,25 +394,30 @@ const CHANNELS = 1;
                         console.log("Hourly Rate Not Changed");
                     }
 
-                    if (rateIncreaseDropdown) {
-                        let firstRateIncreaseDropdown = document.querySelector("#dropdown-label-3")
-                        firstRateIncreaseDropdown.click();
+                    await new Promise(r => setTimeout(r, 100));
 
-                        console.log("Click Rate Increase Dropdown Div");
+                    while (true) {
 
-                        while (true) {
-                            let never = document.querySelector(".sri-form-card .up-menu-container ul[data-test=menu] li:first-child");
-                            if (never) {
-                                never.click();
-                                console.log("Click never");
-                                break;
-                            }
-                            await new Promise(r => setTimeout(r, 500));
+                        let firstRateIncreaseDropdown =[...document.querySelectorAll("span")].filter(a => a.innerText.includes(`Select a frequency`))[0];
+                        if (firstRateIncreaseDropdown) {
+                            firstRateIncreaseDropdown.click();
+                            console.log("Click Rate Increase Dropdown Div");
+                            break;
                         }
-                        break;
+                        await new Promise(r => setTimeout(r, 500));
+                    }
+
+                    while (true) {
+                        let never = [...document.querySelectorAll("li")].filter(a => a.innerText.includes(`Never`))[0];
+                        if (never) {
+                            never.click();
+                            console.log("Click never");
+                            break;
+                        }
+                        await new Promise(r => setTimeout(r, 500));
                     }
                     break;
-                } else if (projectModeRadio || fixedBudgetInput) {      // } else if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 2) {
+                } else if (projectModeRadio || fixedBudgetInput) {		// } else if (data.openingsCache[data.ciphertext].opening.hourlyBudgetType == 2) {
                     vueData.fixedPricePaymentMode = "default";
                     if (proposalData.fixedBudget) {
                         vueData.chargedAmount = proposalData.fixedBudget;
@@ -424,6 +428,7 @@ const CHANNELS = 1;
                     let dropdownDiv = document.querySelector(".fe-proposal-job-estimated-duration [data-test=dropdown-toggle]");
                     dropdownDiv.click();
                     console.log("Click Dropdown Div");
+
                     while (true) {
                         let lessThan1Month = document.querySelector(".fe-proposal-job-estimated-duration .up-dropdown-menu-container ul[role=listbox] li:last-child");
                         if (lessThan1Month) {
@@ -434,28 +439,11 @@ const CHANNELS = 1;
                         await new Promise(r => setTimeout(r, 500));
                     }
                     break;
-
-                    if (rateIncreaseDropdown) {
-                        let firstRateIncreaseDropdown = document.querySelector("#dropdown-label-3")
-                        firstRateIncreaseDropdown.click();
-
-                        console.log("Click Rate Increase Dropdown Div");
-
-                        while (true) {
-                            let never = document.querySelector(".sri-form-card .up-menu-container ul[data-test=menu] li:first-child");
-                            if (never) {
-                                never.click();
-                                console.log("Click never");
-                                break;
-                            }
-                            await new Promise(r => setTimeout(r, 500));
-                        }
-                        break;
-                    }
                 } else {
                     // console.log("Unknown Budget Type: " + data.openingsCache[data.ciphertext].opening.hourlyBudgetType);
                     console.log("Budget Type Not Found, Retry...");
                 }
+                
                 await new Promise(r => setTimeout(r, 500));
             }
 
@@ -516,6 +504,7 @@ const CHANNELS = 1;
                 // break;
             }
 
+            
             for (let i = 0; i < 10; i++) {
                 await new Promise(r => setTimeout(r, 1000));
                 console.log(`Waiting for submit confirm dialog... ${i}`);
@@ -557,6 +546,7 @@ const CHANNELS = 1;
                 }
                 await new Promise(r => setTimeout(r, 500));
             }
+
             break;
         }
     } else if (location.pathname.includes('/ab/proposals/')) {
