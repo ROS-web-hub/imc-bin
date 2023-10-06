@@ -6,7 +6,7 @@ window.SERVER_URL = "http://146.19.170.48";
 window.AUTO_ENABLED = 1;
 window.PRE = [1, 2];
 
-window.CHANNELS = [1, 2, 3];
+window.CHANNELS = [1, 2, 3, 4];
 window.CHANNEL_INDEX = 0;
 window.AUTO_INTERVAL = 5000;
 
@@ -381,10 +381,10 @@ window.checkTitleBan = function (jobTitleLowerCase) {
 	if (jobTitleLowerCase.startsWith("do not apply ") || jobTitleLowerCase.startsWith("[$"))
 		return jobTitleLowerCase;
 	const banList = [/* " tutor", " teach", " guide", " assist", " consult", " support", " lead", "troubleshoot",*/
-		" android ", "wordpress", "wp", " iphone ", " ionic ", " unity ", " unreal ", " swift ", " ios ", " zoho ", " youtube ", " tiktok ", " reddit ", " spotify ", " facebook ", " linkedin ", " twitter ", " instagram ", " pinterest ", " whatsapp ", /*" social",*/ 
+		" ionic ", " unity ", " unreal ", " zoho ", " youtube ", " tiktok ", " reddit ", " spotify ", " facebook ", " linkedin ", " twitter ", " instagram ", " pinterest ", " whatsapp ", /*" social",*/ 
 		" airtable ", " notion ", " salesforce ", " squarespace ", " zenddesk ", " hubspot ",
 		" filemaker ", " sharepoint ", " moodle ", " odoo ", " kajabi ", " thinkific ",
-		" drupal ", " graphic design", " graphite design", "webassembly", "web assembly",
+		" graphic design", " graphite design", "webassembly", "web assembly",
 		" devops ", " dev ops ", " kubernetes ", " voip ", " streaming ", " mulesoft ", " gsap ",
 		" tradingview ", " pinescript ", " metatrader ", " mt4 ", " mt5 ",
 		" framer ", " terraform ", " quickbooks ", " monday.com ", " playwright ",
@@ -427,6 +427,11 @@ window.getProposalTypes = function (jobTitle, jobDescription, checkBan) {
 	if (` ${jobTitle} `.includes(" spring ") || jobTitle.includes("java") && (jobTitle.includes("web") || jobTitle.includes("backend") || jobTitle.includes("back end") || jobTitle.includes("fullstack") || jobTitle.includes("full stack")))
 		return [
 			{ preference: 1, title: "java spring", profile: "java-cs", proposalId: "java-spring-1", channel: 0, priority: 2 }
+		];
+	if (jobTitle.includes("wordpress") || jobTitle.includes("wp"))
+		return [
+			{ preference: 1, title: "wordpress", profile: "wp-django", proposalId: "wordpress-1", channel: 0, priority: 1 },
+			{ preference: 2, title: "wordpress", profile: "node-php", proposalId: "wordpress-2", channel: 0, priority: 3 },
 		];
 	if (jobTitle.includes("backend") || jobTitle.includes("database") || jobTitle.includes("api development") || jobTitle.includes("api"))
 		return [
@@ -501,6 +506,11 @@ window.getProposalTypes = function (jobTitle, jobDescription, checkBan) {
 			{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 3 },
 			{ preference: 2, title: "frontend", profile: "frontend", proposalId: "frontend-7", channel: 0, priority: 3 }
 		];
+	if (jobTitle.includes("design") || jobTitle.includes("designer"))
+		return [
+			{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "design-1", channel: 0, priority: 3 },
+			{ preference: 2, title: "frontend", profile: "frontend", proposalId: "design-2", channel: 0, priority: 3 }
+		];
 	if (jobTitle.includes("frontend") || jobTitle.includes("front end") || jobTitle.includes("responsive") || ` ${jobTitle} `.includes(" css ") || jobTitle.includes("figma to html") || jobTitle.includes("figma"))
 		return [
 			{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "frontend-8", channel: 0, priority: 2 },
@@ -510,11 +520,12 @@ window.getProposalTypes = function (jobTitle, jobDescription, checkBan) {
 	|| jobTitle.includes("full stack developer") || jobTitle.includes("website") || jobTitle.includes("developer") || jobTitle.includes("dashboard") 
 	|| jobTitle.includes("landing") || jobTitle.includes("portal") || jobTitle.includes("backend") || jobTitle.includes("back end") || jobTitle.includes("app") 
 	|| jobTitle.includes("web developer") || jobTitle.includes("fullstack") || jobTitle.includes("full stack") || jobTitle.includes("bug") || jobTitle.includes("fix")
-	|| jobTitle.includes("integration") || jobTitle.includes("build responsive") || jobTitle.includes("software") || jobTitle.includes("engineer") || jobTitle.includes("dapp") || jobTitle.includes("blockchain")
+	|| jobTitle.includes("integration") || jobTitle.includes("design") || jobTitle.includes("design") || jobTitle.includes("build responsive") || jobTitle.includes("software") || jobTitle.includes("engineer") || jobTitle.includes("dapp") || jobTitle.includes("blockchain")
 	|| jobTitle.includes("build") || jobTitle.includes("responsive") || jobTitle.includes("database") || jobTitle.includes("development") || jobTitle.includes("integration") || jobTitle.includes("website") || jobTitle.includes("solidity") 
 	|| jobTitle.includes("smart contract") || jobTitle.includes("application") || jobTitle.includes("api") || jobTitle.includes("next") || jobTitle.includes("nest")
 	|| jobTitle.includes("vue") || jobTitle.includes("react") || jobTitle.includes("angular") || jobTitle.includes("framework") || jobTitle.includes("project")
-	|| jobTitle.includes("html") || jobTitle.includes("css") || jobTitle.includes("frontend")) {
+	|| jobTitle.includes("html") || jobTitle.includes("laravel") || jobTitle.includes("ecommerce") || jobTitle.includes("nft") || jobTitle.includes("node") 
+	|| jobTitle.includes("mobile") || jobTitle.includes("wordpress") || jobTitle.includes("wp") || jobTitle.includes("dashboard") || jobTitle.includes("sql") || jobTitle.includes("supabase") || jobTitle.includes("python") || jobTitle.includes("django") || jobTitle.includes("typescript") ||jobTitle.includes("css") || jobTitle.includes("frontend")) {
 		if (jobDescription) {
 			jobDescription = jobDescription.replaceAll(/[\,\/\-\~\!\?–]/g, " ").replace(/\.+$/, "").replaceAll(/\s\s+/g, " ").toLowerCase();
 			if (jobDescription.includes("web3") || jobDescription.includes("web 3") || jobDescription.includes("blockchain") || jobDescription.includes("solidity")
@@ -534,6 +545,11 @@ window.getProposalTypes = function (jobTitle, jobDescription, checkBan) {
 				return [
 					{ preference: 1, title: "database", profile: "laravel-ruby", proposalId: "full-stack-1", channel: 0, priority: 3 },
 					{ preference: 2, title: "django", profile: "wp-django", proposalId: "django-flask-1", channel: 0, priority: 1 }
+				];
+			if (jobDescription.includes("wordpress") || jobDescription.includes("wp"))
+				return [
+					{ preference: 1, title: "wordpress", profile: "wp-django", proposalId: "wordpress-1", channel: 0, priority: 1 },
+					{ preference: 2, title: "wordpress", profile: "node-php", proposalId: "wordpress-2", channel: 0, priority: 3 },
 				];
 			if (` ${jobDescription} `.includes(" ruby ") || ` ${jobDescription} `.includes(" rales "))
 				return [
@@ -556,6 +572,11 @@ window.getProposalTypes = function (jobTitle, jobDescription, checkBan) {
 				return [
 					{ preference: 1, title: "react", profile: "node-php", proposalId: "react-5", channel: 0, priority: 2 },
 					{ preference: 2, title: "fullstack", profile: "javascript", proposalId: "react-4", channel: 0, priority: 2 },
+				];
+			if (jobTitle.includes("design") || jobTitle.includes("designer"))
+				return [
+					{ preference: 1, title: "frontend", profile: "frontend-2", proposalId: "design-1", channel: 0, priority: 3 },
+					{ preference: 2, title: "frontend", profile: "frontend", proposalId: "design-2", channel: 0, priority: 3 }
 				];
 			if (jobDescription.includes("vue") || jobDescription.includes("nuxt") || jobDescription.includes("mevn"))
 				return [
@@ -891,6 +912,47 @@ Looking forward to the possibility of working together.
 
 Best regards`,
 
+	"design-1": `Hi, ❤❤❤❤❤❤.
+	As a seasoned graphic designer with over 8 years of experience in logo design, UX/UI design and graphic design.
+
+I understand that you're seeking a designer, and I believe my technical skills, creativity, and passion for design make me an excellent candidate for your project. I am confident in my ability to translate your ideas into visually appealing designs that will enhance your brand image while effectively communicating your message to your target audience.
+
+In my previous roles, I have:
+
+Developed creative graphics and visual layouts for a wide range of clients, delivering unique and impactful designs.
+Worked closely with clients to understand their vision, preferences, and goals to provide thoughtful, impactful design solutions.
+Completed projects successfully and on time, often under tight deadlines without compromising the quality of work.
+I am proficient in the use of Adobe Creative Suite (including Photoshop, Illustrator, InDesign) and other design tools. I strive to keep up with the latest design trends and continuously improve my skills to deliver up-to-date designs.
+
+I invite you to take a look at my portfolio here: 
+https://miata.io/
+https://meditation-pro.vercel.app/
+https://xd.adobe.com/view/ad184190-cf88-4e53-904c-b0e5fa86cd5a-f84b/
+
+https://xd.adobe.com/view/d627495b-e070-468d-b56b-8b2bdd946494-8374/
+
+https://xd.adobe.com/view/e18c6364-9cbc-4a62-b9a6-6eb994cb65dd-b4df/
+
+https://xd.adobe.com/view/bc4ace5e-1e5e-4df0-9cb7-5a77653ea53f-e919/
+
+
+
+Should you choose to work with me, my priority will be to deliver a design that not only meets your expectations but also surpasses them. I look forward to the possibility of working together and am ready to start right away.
+
+Thank you for considering my bid. I hope to discuss the project further with you soon.
+
+Best Regards`,
+
+	"design-2": `Hi, 🙏🙏🙏.
+As an experienced designer adept at UI/UX designer, I'm confident in my ability to bring your vision to life.
+
+My past designs: https://www.figma.com/file/DCZhjQdV7RviW8oZKeexWH/%5BClient%5D-Zheng_website-in-figma?type=design&node-id=0-1  
+				https://xd.adobe.com/view/f4d75fb3-e0e3-4387-95e2-00504d6c8da9-a184/screen/a341817d-cd77-43ca-b891-3bf2354667c1/
+I'm skilled in Adobe Creative Suite and continuously adapt to new design trends.
+
+Looking forward to potentially collaborating with you and delivering designs that not only meet but exceed your expectations.
+
+Best Regards`,
 
 	"laravel-2": `Hi ,👈👈👈
 	As a highly skilled PHP full-stack developer with expertise in Laravel and Vue/React, I am confident in my ability to deliver exceptional results for your project. With years of experience in Laravel, I have successfully built and maintained robust, scalable, and secure web applications. Additionally, my proficiency in Vue and React enables me to create dynamic and interactive user interfaces that enhance the overall user experience.
