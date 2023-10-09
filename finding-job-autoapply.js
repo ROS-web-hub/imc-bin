@@ -6,7 +6,7 @@ window.SERVER_URL = "http://146.19.170.48";
 window.AUTO_ENABLED = 1;
 window.PRE = [1, 2];
 
-window.CHANNELS = [1];
+window.CHANNELS = [1, 2, 3, 4];
 window.CHANNEL_INDEX = 0;
 window.AUTO_INTERVAL = 5000;
 
@@ -840,7 +840,7 @@ I eagerly anticipate the opportunity to work with you.
 Thank you.`,
 
 
-	"django-flask-1": `Hello 👋👋👋
+	"django-flask-1": `Hello 👋👋👋👋👋👋👋👋👋👋👋👋
 I am a highly skilled and experienced Python full-stack developer with 3+ years of experience. I have extensive experience in Python, Django and Flask. And also have experience in React/Next/Gatsby, Vue/Nuxt, Javascript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket and so on. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -849,7 +849,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"ruby-1": `Hello 👍👍
+	"ruby-1": `Hello 👍👍👍👍👍👍👍👍👍👍👍👍👍👍
 I am an experienced Ruby on Rails full-stack developer with 3+ years of expertise. My skills extend to React/Next/Gatsby, Vue/Nuxt, JavaScript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket, and more. I have a strong command of W3C web protocols and mobile-responsive design.
 
 With extensive experience in backend and frontend development, database management, cloud management, web hosting, and SEO, I am confident in my ability to assist with any project.
@@ -866,7 +866,7 @@ I am excited about the opportunity to work with you.
 Thank you`,
 
 
-	"wordpress-1": `Hello 👋👋👋
+	"wordpress-1": `Hello 👋👋👋👋👋👋👋👋👋👋👋👋👋👋👋
 I am a highly skilled and experienced WordPress developer with 7+ years of experience. I have extensive experience in PHP, WordPress and WooCommerce. And I am excellent in frontend development including HTML/CSS, Javascript, React/Vue and Responsive Design. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design. I am confident in my ability to be helpful for any kind of your work.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on.
 
@@ -883,7 +883,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"full-stack-2": `Hi. 👍
+	"full-stack-2": `Hi. 👍👍👍👍👍👍👍👍👍👍👍👍👍👍
 	As an experienced web developer with expertise in both frontend and backend development, I believe I am an ideal candidate for this project.
 
 Over the years, I have honed my skills in creating responsive and visually appealing user interfaces using modern frontend technologies such as HTML, CSS, JavaScript, React, Vue, Tailwind CSS etc. Additionally, my proficiency in backend development with languages like PHP, Python, Javascript and frameworks like Laravel, WordPress, Django, Express enables me to build robust and scalable web applications.
@@ -912,7 +912,7 @@ Looking forward to the possibility of working together.
 
 Best regards`,
 
-	"design-1": `Hi, ❤❤❤❤❤❤.
+	"design-1": `Hi, ❤❤❤❤❤❤❤❤❤❤❤❤.
 	As a seasoned graphic designer with over 8 years of experience in logo design, UX/UI design and graphic design.
 
 I understand that you're seeking a designer, and I believe my technical skills, creativity, and passion for design make me an excellent candidate for your project. I am confident in my ability to translate your ideas into visually appealing designs that will enhance your brand image while effectively communicating your message to your target audience.
@@ -943,18 +943,19 @@ Thank you for considering my bid. I hope to discuss the project further with you
 
 Best Regards`,
 
-	"design-2": `Hi, 🙏🙏🙏.
+	"design-2": `Hi, 🙏🙏🙏🙏🙏🙏🙏🙏🙏.
 As an experienced designer adept at UI/UX designer, I'm confident in my ability to bring your vision to life.
 
 My past designs: https://www.figma.com/file/DCZhjQdV7RviW8oZKeexWH/%5BClient%5D-Zheng_website-in-figma?type=design&node-id=0-1  
-				https://xd.adobe.com/view/f4d75fb3-e0e3-4387-95e2-00504d6c8da9-a184/screen/a341817d-cd77-43ca-b891-3bf2354667c1/
+				 
+				 https://xd.adobe.com/view/f4d75fb3-e0e3-4387-95e2-00504d6c8da9-a184/screen/a341817d-cd77-43ca-b891-3bf2354667c1/
 I'm skilled in Adobe Creative Suite and continuously adapt to new design trends.
 
 Looking forward to potentially collaborating with you and delivering designs that not only meet but exceed your expectations.
 
 Best Regards`,
 
-	"laravel-2": `Hi ,👈👈👈
+	"laravel-2": `Hi ,👈👈👈👈👈👈👈👈👈👈👈👈
 	As a highly skilled PHP full-stack developer with expertise in Laravel and Vue/React, I am confident in my ability to deliver exceptional results for your project. With years of experience in Laravel, I have successfully built and maintained robust, scalable, and secure web applications. Additionally, my proficiency in Vue and React enables me to create dynamic and interactive user interfaces that enhance the overall user experience.
 
 Here are some of my notable past projects:
@@ -980,7 +981,7 @@ Thank you for considering my proposal. I look forward to the opportunity to work
 Best regards`,
 
 
-	"wordpress-2": `Hi. 👉👉👉
+	"wordpress-2": `Hi. 👉👉👉👉👉👉👉👉👉👉👉👉
 	As an experienced WordPress developer with a strong background in various themes and plugins, I believe I possess the skills and expertise necessary to successfully complete your project.
 
 Throughout my career, I have worked extensively with WordPress, developing custom themes and implementing plugins to meet clients' unique requirements. I am well-versed in HTML, CSS, and PHP, allowing me to create visually stunning and functional websites.
@@ -1000,7 +1001,7 @@ I would be delighted to discuss your project further. Thank you for considering 
 Best regards`,
 
 
-	"blockchain-4": `Hello 🙏🙏🙏
+	"blockchain-4": `Hello 🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏🙏
 As a highly skilled and experienced Web3/Blockchain developer, I am excited to offer my expertise for your project. With a solid background in Web3/Blockchain development, including Web3, Smart Contracts, Solidity, and NFTs, I am well-versed in the latest technologies and practices in this field. Additionally, I have extensive experience in modern Web/Web3 technologies such as React/Next/Gatsby, Vue/Nuxt, JavaScript/TypeScript, Node/Express/Nest, Tailwind CSS, REST API/GraphQL/WebSocket, and more.
 
 As a full-stack developer, I possess a wealth of experience in both backend and frontend development, database management, cloud management, web hosting, SEO, and other related areas. I am confident in my ability to provide valuable assistance for any kind of work you require.
@@ -1029,7 +1030,7 @@ I am excited about the possibility of working with you and contributing to the s
 Thank you.`,
 
 
-	"react-4": `Hello ,❤
+	"react-4": `Hello ,❤❤❤❤❤❤❤❤❤❤❤
 I am a highly skilled full-stack developer with extensive experience in a wide range of technologies including React, Next, Gatsby, JavaScript, TypeScript, Node, Express, Nest, Tailwind CSS, REST API, GraphQL, WebSocket, and more. With my expertise in both backend and frontend development, database management, cloud management, web hosting, and SEO, I am confident in my ability to provide valuable assistance for any kind of project.
 
 Here are some of my notable past projects:
@@ -1048,7 +1049,7 @@ I am excited about the opportunity to work with you and contribute my expertise 
 Thank you.`,
 
 
-	"node-4": `Hi , 🤝🤝🤝.
+	"node-4": `Hi , 🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝.
 	I hope this message finds you well. I am writing to express my interest in working with you as a Node.js developer. With my extensive experience in Node.js, Express, TypeScript, and database management, I am confident in my ability to contribute to your project.
 
 As a Node.js developer, I have successfully completed several projects in the past, showcasing my expertise in building scalable and efficient backend systems. Here is an example of my work:
@@ -1060,7 +1061,7 @@ I am dedicated, self-motivated, and pay great attention to detail. I believe eff
 Thank you for considering my bid. I look forward to the opportunity to work with you.`,
 
 
-	"vue-4": `Hello, 👌👌👌👌👌
+	"vue-4": `Hello, 👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌
 
 I am a highly skilled frontend developer with extensive experience in Vue.js, JavaScript/TypeScript, and frontend development. I have a strong background in building robust and scalable web applications using Vue.js and its ecosystem.
 
@@ -1087,7 +1088,7 @@ I look forward to the possibility of working with you.
 Thank you.`,
 
 
-	"full-stack-4": `Hi, 👌
+	"full-stack-4": `Hi, 👌👌👌👌👌👌👌
 	I hope this proposal finds you well. I am thrilled to submit my application for your website development project. As a highly skilled and experienced Full Stack Developer, I believe I am the perfect fit for your project.
 
 With 8+ years of industry experience, I have successfully delivered numerous web development projects, showcasing my expertise in both front-end and back-end technologies. I am proficient in HTML, CSS, JavaScript, and have a strong command over popular frameworks such as React and Vue.
@@ -1103,7 +1104,7 @@ I would love the opportunity to discuss your project in more detail and provide 
 Best regards`,
 
 
-	"react-5": `Hi. 👈👈
+	"react-5": `Hi. 👈👈👈👈👈👈👈👈
 	As an experienced JavaScript full stack developer with expertise in React/Next.js and MERN stacks(MongoDB, Express.js, React, Node.js), I am confident in my ability to deliver exceptional results for your project.
 
 With a strong background in both frontend and backend development, I possess the skills necessary to build robust and scalable web applications. My experience with the MERN stacks allows me to develop efficient and interactive user interfaces using React and Next/Gatsby, while also implementing server-side functionalities using various backend stacks such as Node/Express/Nest, PHP/Laravel, Python/Django and so on.
@@ -1124,7 +1125,7 @@ I would be thrilled to discuss your project further and showcase my portfolio of
 Best regards`,
 
 
-	"node-5": `Hi. 👋👋👋
+	"node-5": `Hi. 👋👋👋👋👋👋👋👋👋👋👋👋
 	As an experienced JavaScript full stack developer with expertise in React, Vue, and Node, I am confident in my ability to deliver exceptional results for your project.
 
 With a strong background in frontend and backend development, I possess the skills necessary to create dynamic and engaging web applications. I have extensive experience in developing responsive user interfaces using React and Vue, ensuring seamless user experiences across different devices and platforms.
@@ -1138,7 +1139,7 @@ I would be thrilled to discuss your project in more detail. Thank you for consid
 Best regards`,
 
 
-	"vue-5": `Hi. 👋👋👋
+	"vue-5": `Hi. 👋👋👋👋👋👋👋👋👋👋👋👋
 	As an experienced JavaScript full stack developer with expertise in Vue and MEVN (MongoDB, Express.js, Vue.js, Node.js) stacks, I am confident in my ability to deliver exceptional results for your project.
 
 With a strong background in both frontend and backend development, I possess the skills necessary to build robust and scalable web applications. My experience with the MEVN stacks allows me to develop efficient and interactive user interfaces using Vue and Nuxt, while also implementing server-side functionalities using various backend stacks such as Node/Express/Nest, PHP/Laravel, Ruby on Rails and so on.
@@ -1157,7 +1158,7 @@ I would be thrilled to discuss your project further and showcase my portfolio of
 Best regards`,
 
 
-	"svelte-5": `Hi.👋👋👋
+	"svelte-5": `Hi.👋👋👋👋👋👋👋👋👋👋👋👋
 	 I am an experienced JavaScript developer. With several years of experience in web development, I am confident that I have the skills and expertise needed to complete this project successfully.
 
 As a Svelte developer, I have worked on various projects ranging from simple landing pages to complex web applications. I am proficient in HTML, CSS, JavaScript and TypeScript, and have a strong understanding of front-end development.
@@ -1188,7 +1189,7 @@ I am available for a call to discuss your project in more detail or to provide a
 Thank you for considering my proposal. I am excited about the opportunity to work with you and contribute to the success of your blockchain project.`,
 
 
-	"full-stack-5": `Hi. ✨
+	"full-stack-5": `Hi. ✨✨✨✨✨✨✨✨✨
 I am a skilled Full Stack Developer with 7+ years of experience and a proven track record of delivering successful web development projects.
 
 Here's why I believe I am the right fit for your project:
@@ -1202,7 +1203,7 @@ Thank you for considering my proposal. I look forward to discussing the project 
 Best regards`,
 
 
-	"ecommerce-7": `Hello 👋
+	"ecommerce-7": `Hello 👋👋👋👋👋👋👋👋👋👋
 I am a highly skilled and experienced Ecommerce developer with 5+ years of experience. I have extensive experience in Shopify and Ecommerce Website development. And I am excellent in frontend development including HTML/CSS, Javascript, React/Vue and Responsive Design. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -1253,7 +1254,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"shopify-7": `Hello 👋
+	"shopify-7": `Hello 👋👋👋👋👋👋👋👋👋👋
 I am a highly skilled and experienced Shopify developer with 4+ years of experience. I have extensive experience in Shopify/Shopify Plus development, API integration, theme customization, Response design, and so on. And I am excellent in frontend development including HTML/CSS, Javascript, React/Vue and Responsive Design. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design.
 As a full-stack developer, I have extensive experience in Backend and frontend development, database management, cloud management, web hosting, SEO and so on. I am confident in my ability to be helpful for any kind of your work.
 
@@ -1268,7 +1269,7 @@ I look forward to the possibility of working with you.
 Thank you.`,
 
 
-	"webflow-7": `Hello 👋
+	"webflow-7": `Hello 👋👋👋👋👋👋👋👋
 I am a highly skilled and experienced Webflow developer. I have strong background and solid experience in Webflow and HTML/CSS. I have extensive experience in building landing page and Ecommerce websites. I mastered in W3C standard web protocols and mobile/responsive/browser sensitive design. I am confident in my ability to be helpful for any kind of your work.
 
 You can check my past Webflow projects:
@@ -1281,7 +1282,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"chrome-extension-7": `Hello 👋
+	"chrome-extension-7": `Hello 👋👋👋👋👋👋👋👋👋
 I am an experienced Chrome Extension developer interested in your project. With a strong background in JavaScript, HTML, CSS, and the Chrome Extension API, I am confident in my ability to meet your requirements effectively.
 
 As an experienced front-end developer, I have extensive experience in HTML/CSS, Javascript/TypeScript, React/Vue/Node, Tailwind CSS, REST API/GraphQL/WebSocket and so on.
@@ -1291,7 +1292,7 @@ I look forward to the opportunity to work with you.
 Thank you.`,
 
 
-	"frontend-8": `Hi.👋👋
+	"frontend-8": `Hi.👋👋👋👋👋👋👋👋👋👋👋👋
 	 As an experienced individual frontend developer, I possess the skills and expertise required to successfully complete your project.
 
 With 6+ years of experience, I am proficient in HTML, CSS, JavaScript, and modern frontend frameworks like React and Vue.
@@ -1321,7 +1322,7 @@ I would be happy to discuss your project further or answer any questions you may
 Thank you for considering my proposal. I look forward to the opportunity to work with you and bring your project to life.`,
 
 
-	"ecommerce-8": `Hi.✨✨✨
+	"ecommerce-8": `Hi.✨✨✨✨✨✨✨✨✨✨✨✨
 	 I am an experience developer with a strong background in ecommerce development and extensive experience in building ecommerce, Shopify, WordPress websites, I possess the skills necessary to create visually appealing, user-friendly, and high-performing online stores.
 
 Throughout my career, I have successfully completed numerous ecommerce projects, earning positive feedback from clients for my technical expertise, attention to detail, and ability to meet project deadlines. I am dedicated to delivering exceptional quality work while ensuring the highest level of customer satisfaction.
@@ -1337,7 +1338,7 @@ I would be delighted to discuss your project further and showcase my portfolio o
 Best regards`,
 
 
-	"shopify-8": `Hi 👈. 
+	"shopify-8": `Hi 👈👈👈👈👈👈👈👈👈. 
 	I am an experience developer with a strong background in Shopify development and extensive experience in building ecommerce websites, I possess the skills necessary to create visually appealing, user-friendly, and high-performing online stores. I am proficient in customizing Shopify themes, implementing payment gateways, and optimizing the overall shopping experience for customers.
 
 Throughout my career, I have successfully completed numerous Shopify projects, earning positive feedback from clients for my technical expertise, attention to detail, and ability to meet project deadlines. I am dedicated to delivering exceptional quality work while ensuring the highest level of customer satisfaction.
@@ -1359,7 +1360,7 @@ I would be delighted to discuss your project further and showcase my portfolio o
 Best regards`,
 
 
-	"webflow-8": `Hi. 🌟🌟
+	"webflow-8": `Hi. 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
 Very excited to submit my proposal for your Webflow project. As a webflow specialist, I have extensive experience in creating visually stunning and highly functional websites using this platform.
 
 My approach to web design is centered around understanding your unique needs and creating a custom solution that exceeds your expectations. Whether you need a simple landing page or a complex e-commerce site, I have the expertise to deliver a website that not only looks great but also performs well.
@@ -1389,7 +1390,7 @@ With your guidance, I will meticulously analyze the target website's structure a
 I am excited about the opportunity to work with you and demonstrate my expertise in web scraping. I look forward to further discussing the project and finding the best approach to achieve your desired outcomes. Thanks`,
 
 
-"php-laravel-3" : `Hi 👋👋, client.
+"php-laravel-3" : `Hi 👋👋👋👋👋👋👋👋👋👋👋👋👋👋, client.
 I am excited to apply for this Full stack Laravel-PHP Developer role after reading your post.
 I've read in detail about your description for this role.
 
@@ -1498,7 +1499,7 @@ I am thrilled about the opportunity to work on this project and contribute my ex
 Best regards.` ,
 
  "database-mongodb" : `
-Greetings! 😍😍
+Greetings! 👋👋👋👋👋👋👋👋👋👋
 
 I am an experienced backend developer specializing in database API development, bringing a wealth of expertise to the table. Throughout my career, I have consistently delivered exceptional solutions, and I am confident in my ability to meet your requirements with a robust and scalable backend solution.
 
@@ -1531,7 +1532,7 @@ I am thrilled about the opportunity to work on this project and contribute my ex
 
 Best regards.
 ` ,
-	"react-next-mern-1" : `Hi, there 😎😎.
+	"react-next-mern-1" : `Hi, there 👋👋👋👋👋👋👋👋👋👋👋👋.
 As a talented web developer , I am appling on your project after reading your post.
 In my previous role, I had the opportunity to work extensively with the React-Next-Gatsby - MERN stack. This stack allowed me to build modern and efficient web applications from front to back.
 
@@ -1572,9 +1573,6 @@ https://www.thecustommovement.com
 Thank you for considering my application. I would welcome the opportunity to discuss how my skills and experience align with your company's needs.
 I look forward to the possibility of working with you.
 
-Sincerely.
-
-
-` ,
+Sincerely.`,
 
 }
