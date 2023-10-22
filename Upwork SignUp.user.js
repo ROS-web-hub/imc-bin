@@ -6,7 +6,7 @@
 // @author       Valloon
 // @match        https://www.upwork.com/*
 // @match        http://web.valloon.me/*
-// @match        http://localhost/*
+// @match        http://146.19.170.48/*
 // @icon         https://www.upwork.com/favicons.ico
 // @grant        unsafeWindow
 // @grant        GM_setValue
@@ -19,7 +19,7 @@
 // @require http://code.jquery.com/jquery-latest.js
 
 
-const SERVER_URL = "http://localhost";
+const SERVER_URL = "http://146.19.170.48";
 // const SERVER_URL = "http://web.valloon.me";
 const CHANNEL = 0;
 const DEBUG_MODE = 0;
