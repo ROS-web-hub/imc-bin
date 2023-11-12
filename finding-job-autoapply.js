@@ -1,3 +1,6 @@
+This is openAI api key for https://chat-gpt-ui-git-main-recaorshell.vercel.app/
+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
+
 // https://www.upwork.com/nx/find-work/sw.js
 // window.$nuxt.$store._vm.$data.$$state['feedMy']['jobs'][0].recno
 
